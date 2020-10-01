@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 16:57:43 by mravily           #+#    #+#             */
-/*   Updated: 2020/06/14 14:58:03 by mravily          ###   ########.fr       */
+/*   Updated: 2020/09/28 11:55:33 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,11 +104,13 @@ void			parsing_cub(char *argv, t_engine *engine)
 	while (ret == 1)
 	{
 		ret = get_next_line(fd, &line);
-		if (ft_strlen(line) == 0)
-			free(line);
-		else if (ft_strlen(line) != 0)
+		//if (ft_strlen(line) == 0)
+			//free(line);
+		if (ft_strlen(line) != 0)
 			check_line(line, engine);
+		//free(line);
 	}
+	close(fd);
 	check_map(engine->config, engine->player);
 	check_init_var(engine);
 }

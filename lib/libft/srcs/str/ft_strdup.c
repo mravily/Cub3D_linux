@@ -5,28 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/26 13:01:18 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/26 13:01:20 by mravily          ###   ########.fr       */
+/*   Created: 2020/09/26 17:31:23 by mravily           #+#    #+#             */
+/*   Updated: 2020/09/26 17:36:37 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "libft.h"
 
-char	*ft_strdup(char *str)
+char		*ft_strdup(char *s)
 {
-	char	*result;
-	size_t	len;
 	size_t	i;
+	size_t	len_s;
+	char	*dup;
 
-	if (str == NULL)
-		return (NULL);
-	len = ft_strlen(str);
-	result = ft_strnew(len);
 	i = 0;
-	while (i < len)
+	len_s = ft_strlen(s);
+	if (!(dup = (char *)malloc(sizeof(char) * (len_s + 1))))
+		return (NULL);
+	while (i < len_s)
 	{
-		result[i] = str[i];
+		dup[i] = s[i];
 		i++;
 	}
-	return (result);
+	dup[i] = '\0';
+	return (dup);
 }

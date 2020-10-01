@@ -6,11 +6,12 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 16:54:30 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/26 13:30:53 by mravily          ###   ########.fr       */
+/*   Updated: 2020/09/28 11:52:38 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "libft.h"
 
 static int		check_backslash_n(char *buf, char *rest)
 {
@@ -59,6 +60,9 @@ int				get_next_line_brother(int fd, char **line)
 	int				i[2];
 	char			*tmp;
 
+	tmp = NULL;
+	i[0] = 0;
+	i[1] = 0;
 	while ((i[1] = read(fd, buf, BUFFER_SIZE)) > 0 || i[0] != -1)
 	{
 		buf[i[1]] = '\0';
@@ -74,7 +78,8 @@ int				get_next_line_brother(int fd, char **line)
 			if (*line == NULL || tmp == NULL)
 				return (-1);
 			free(rest);
-			rest = tmp;
+			rest = ft_strdup(tmp);
+			free(tmp);
 			return (1);
 		}
 	}

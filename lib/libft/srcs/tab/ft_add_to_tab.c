@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 19:34:37 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/26 12:43:51 by mravily          ###   ########.fr       */
+/*   Updated: 2020/09/28 11:56:48 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_add_to_tab(void *to_add, void ***tab)
 	*tab = ft_tab_new(ft_tab_len(tmp) + 1);
 	if (tmp != NULL)
 	{
-		ft_tab_cpy(*tab, tmp);
+		ft_tab_dup(*tab, tmp);
 		free(tmp);
 	}
 	(*tab)[ft_tab_len(*tab)] = to_add;

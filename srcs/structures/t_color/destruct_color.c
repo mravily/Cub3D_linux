@@ -21,6 +21,7 @@ void		destroy_color(t_color to_destroy)
 	to_destroy.r = 0;
 	to_destroy.g = 0;
 	to_destroy.b = 0;
+	(void)to_destroy;
 }
 
 /*

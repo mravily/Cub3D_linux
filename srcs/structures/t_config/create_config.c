@@ -53,7 +53,7 @@ t_config		create_config(char *title)
 	int			i;
 
 	config.title = ft_strdup(title);
-	config.resolution = create_vector(-1, -1);
+	config.resolution = create_vector(150, 150);
 	i = 0;
 	while (i < NB_TEX)
 	{

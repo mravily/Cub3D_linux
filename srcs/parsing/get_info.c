@@ -37,11 +37,12 @@ void		get_resolution(char *line, t_config *config)
 		height = 360;
 	if (height > 1440)
 		height = 1440;
-	if (config->resolution.x == -1 && config->resolution.y == -1)
+	if (config->resolution.x == 150 && config->resolution.y == 150)
 		config->resolution = create_vector(width, height);
 	else
 		error_exit_cub(line, "2 lines of resolution in the .cub file"
 			, "Find this line in the .cub file");
+	free(tab);
 }
 
 /*

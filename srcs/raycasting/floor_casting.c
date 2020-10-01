@@ -120,7 +120,7 @@ void					floor_casting(t_engine *engine, int height, int x)
 
 	player = engine->player;
 	draw_end = engine->ray_cast->draw_end;
-	engine->bonus->floor_cast = malloc_floor_cast(engine->ray_cast);
+	*(engine->bonus->floor_cast) = create_floor_cast(engine->ray_cast);
 	floor_cast = engine->bonus->floor_cast;
 	init_floor_wall(floor_cast, engine->ray_cast);
 	y = draw_end;

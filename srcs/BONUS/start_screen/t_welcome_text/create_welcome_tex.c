@@ -22,7 +22,7 @@ t_welcome_tex		create_welcome_tex(t_engine *engine, char *path)
 {
 	t_welcome_tex	welcome;
 
-	welcome.path = path;
+	welcome.path = ft_strdup(path);
 	welcome.img = NULL;
 	welcome.addr = NULL;
 	if (!(welcome.img = mlx_xpm_file_to_image(engine->vars->mlx_ptr

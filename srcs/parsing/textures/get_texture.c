@@ -53,4 +53,5 @@ void			get_texture(int id, char *line, t_engine *engine)
 		error_exit_cub(line, "Texture path extension isn't a xpm"
 			, "Find this line in the .cub file");
 	texture_assignment(id, tab[0], engine);
+	//ft_tab_free(tab);
 }

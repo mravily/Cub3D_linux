@@ -29,7 +29,7 @@ t_weapon		create_weapon(t_engine *engine)
 		result.weapon[i] = create_weapon_tex(engine, path_weapon[i]);
 		i++;
 	}
-	ft_tab_free(path_weapon);
+	free(path_weapon);
 	result.part_mini_gun = 12;
 	return (result);
 }

@@ -19,8 +19,9 @@
 void		destroy_bonus(t_bonus to_destroy)
 {
 	free_floor_cast(to_destroy.floor_cast);
-	free_image(to_destroy.mini_map);
-	free_image(to_destroy.img_welc);
+	free_img_welc(to_destroy.img_welc);
+	free_welcome_tex(to_destroy.welcome);
+	free_welcome_tex(to_destroy.game_over);
 	free_helmet(to_destroy.helmet);
 	free_weapon(to_destroy.weapon);
 }

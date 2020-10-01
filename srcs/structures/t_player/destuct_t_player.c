@@ -18,6 +18,7 @@ static void		destroy_inventory(t_inventory to_destroy)
 	to_destroy.mini_gun = false;
 	to_destroy.slot_1 = true;
 	to_destroy.slot_2 = false;
+	(void)to_destroy;
 }
 
 static void		free_inventory(t_inventory *to_free)

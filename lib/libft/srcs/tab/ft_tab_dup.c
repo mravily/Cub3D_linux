@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destruct_vector.c                                  :+:      :+:    :+:   */
+/*   ft_tab_dup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/21 23:25:39 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/29 13:04:58 by mravily          ###   ########.fr       */
+/*   Created: 2020/09/28 13:13:24 by mravily           #+#    #+#             */
+/*   Updated: 2020/09/28 13:14:00 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-/*
-** Mise a zero des elements de la structure
-*/
-
-void		destroy_vector(t_vector to_destroy)
+void	ft_tab_dup(void **dst, void **src)
 {
-	to_destroy.x = 0;
-	to_destroy.y = 0;
-	(void)to_destroy;
-}
+	int	index;
 
-/*
-** Free de la structure t_vector
-*/
-
-void		free_vector(t_vector *to_free)
-{
-	destroy_vector(*to_free);
+	index = 0;
+	while (src[index] != NULL)
+	{
+		dst[index] = ft_strdup(src[index]);
+		index++;
+	}
 }

@@ -20,6 +20,7 @@ void		destroy_engine(t_engine to_destroy)
 {
 	free_vars(to_destroy.vars);
 	free_image(to_destroy.image);
+	free_bonus(to_destroy.bonus);
 	free_ray_cast(to_destroy.ray_cast);
 	free_sprite_cast(to_destroy.sprite_cast);
 	free_player(to_destroy.player);

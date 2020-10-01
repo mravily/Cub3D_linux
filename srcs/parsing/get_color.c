@@ -126,4 +126,5 @@ void			get_color(int id, char *line, t_engine *engine)
 		get_rgb(id, tab[0], config);
 	else if (tab[0][0] == '.' && tab[0][1] == '/')
 		get_path_color(id, tab[0], engine);
+	free(tab);
 }

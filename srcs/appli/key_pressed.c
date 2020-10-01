@@ -34,7 +34,7 @@ int				handle_key_pressed(int key, void *params)
 
 	engine = (t_engine *)params;
 	if (key == ESC_KEY)
-		exit_cub();
+		exit_cub(engine);
 	re_set_dir_player(key, engine->player, engine->event);
 	if (engine->event->start == true)
 	{

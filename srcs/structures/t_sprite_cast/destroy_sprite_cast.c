@@ -28,6 +28,7 @@ void		destroy_sprite_cast(t_sprite_cast to_destroy)
 	to_destroy.tex_y = 0;
 	to_destroy.z_buffer = NULL;
 	to_destroy.v_move_screen = 0;
+	(void)to_destroy;
 }
 
 void		free_sprite_cast(t_sprite_cast *to_free)

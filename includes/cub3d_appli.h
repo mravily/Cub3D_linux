@@ -21,7 +21,9 @@ void		render_screen(t_engine *engine);
 void		render_mini_map(t_engine *engine);
 void		open_appli(t_engine *engine);
 void		resize_appli(t_engine *engine);
-void		appli_key_hook(t_engine *engine, int event
+void			appli_key_hook_pressed(t_engine *engine, int event
+	, int (*funct)(int, void *), void *param);
+void			appli_key_hook_release(t_engine *engine, int event
 	, int (*funct)(int, void *), void *param);
 void		application_add_exit_control(t_engine *engine
 	, int event, int (*funct)(void));

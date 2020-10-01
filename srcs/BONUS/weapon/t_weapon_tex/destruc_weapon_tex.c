@@ -19,8 +19,8 @@
 void		destroy_weapon_tex(t_weapon_tex to_destroy)
 {
 	free(to_destroy.path);
-	free(to_destroy.img);
-	free(to_destroy.addr);
+	to_destroy.img = NULL;
+	to_destroy.addr = NULL;
 	to_destroy.width = -1;
 	to_destroy.height = -1;
 	to_destroy.bits_per_pixel = -1;

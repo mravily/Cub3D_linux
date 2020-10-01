@@ -29,7 +29,7 @@ t_helmet		create_helmet(t_engine *engine)
 		result.helmet_part[i] = create_helmet_tex(engine, path_helmet[i]);
 		i++;
 	}
-	ft_tab_free(path_helmet);
+	free(path_helmet);
 	path_helmet = init_tab_path_ath_tex();
 	i = 0;
 	while (i < ATH_PART)
@@ -37,11 +37,11 @@ t_helmet		create_helmet(t_engine *engine)
 		result.ath_part[i] = create_helmet_tex(engine, path_helmet[i]);
 		i++;
 	}
-	ft_tab_free(path_helmet);
 	result.id_part_helmet = 0;
 	result.put_helmet = 0;
 	result.img_hlmt = malloc_img_hlmt(engine, engine->config->resolution.x
 		, engine->config->resolution.y);
+	free(path_helmet);
 	return (result);
 }
 

@@ -32,6 +32,7 @@ void		destroy_ray_cast(t_ray_cast to_destroy)
 	to_destroy.line_height = 0;
 	to_destroy.draw_start = 0;
 	to_destroy.draw_end = 0;
+	(void)to_destroy;
 }
 
 /*

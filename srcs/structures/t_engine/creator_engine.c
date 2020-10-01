@@ -42,6 +42,6 @@ t_engine		create_engine(char *title)
 	engine.config = malloc_config(title);
 	engine.player = malloc_player(0, 0);
 	engine.event = malloc_event();
-	engine.bonus = malloc_bonus(engine.ray_cast);
+	engine.bonus = malloc_bonus();
 	return (engine);
 }

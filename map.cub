@@ -5,7 +5,7 @@ NO       ./textures/xpm/BASIC/MARBFAC2.xpm
 WE ./textures/xpm/BASIC/MARBFACE.xpm
 EA ./textures/xpm/BASIC/MARBLE3.xpm
 S  ./textures/xpm/SPRITE_BAS.xpm
-F ./textures/xpm/BASIC/FLOOR7_2.xpm 515
+F ./textures/xpm/BASIC/FLOOR7_2.xpm
 C ./textures/xpm/BASIC/CEIL1_2.xpm
 
         1111111111111111111111111

@@ -25,9 +25,10 @@ void	error_exit_cub(char *line, char *str, char *message)
 	exit(0);
 }
 
-int		exit_cub(void)
+int		exit_cub(t_engine *engine)
 {
 	ft_putstr("\nClosing the Cub3D application without error\n");
+	free_engine(engine);
 	exit(EXIT_SUCCESS);
 }
 
@@ -79,9 +80,12 @@ void 	engine_bonus(t_engine *engine)
 	
 	width_welcome = engine->config->resolution.x;
 	height_welcome = engine->config->resolution.y;
+	engine->bonus->floor_cast = malloc_floor_cast(engine->ray_cast);
 	/* Creation d'une image pour le start_screen */
 	engine->bonus->img_welc = malloc_img_welc(engine, width_welcome
 		, height_welcome);
+	engine->bonus->welcome = malloc_welcome_tex(engine, "./textures/xpm/WELCOME.xpm");
+	engine->bonus->game_over = malloc_welcome_tex(engine, "./textures/xpm/GAME_OVER.xpm");
 	engine->bonus->helmet = malloc_helmet(engine);
 	engine->bonus->weapon = malloc_weapon(engine);
 }
@@ -91,38 +95,38 @@ int 	main(int argc, char **argv)
 
 	t_engine 	*engine;
 
-	/* Creation de l'engine */
+	// Creation de l'engine
 	engine = malloc_engine("Cub3D (c)");
 	
-	/* Initialisation de l'appli */
+	// Initialisation de l'appli
 	open_appli(engine);
 	
-	/* Verification du fichier .cub */
+	// Verification du fichier .cub
 	pre_check_file(engine, argc, argv);
 	parsing_cub(argv[1], engine);
 
-	/* Debug Parsing */
+	// Debug Parsing
 	//print_parsing_cub(engine->config, engine->player);
 	
-	/* Mise au bonne dimension fourni par le fichier .cub */
+	// Mise au bonne dimension fourni par le fichier .cub
 	resize_appli(engine);
 		
+	// Initialisation de la structure bonus de Cub3D
+	engine_bonus(engine);
+	
 	if (!(engine->sprite_cast->z_buffer = malloc(sizeof(float *)
 		* engine->config->resolution.x + 1)))
 			error_exit_cub("", "malloc z_buffer failed", "");
-	
-	/* Initialisation de la structure bonus de Cub3D */
-	engine_bonus(engine);
 
-	/* Catch des events keyboard */
-	appli_key_hook(engine, KEYPRESS, &handle_key_pressed, (void *)engine);
-	appli_key_hook(engine, KEYRELEASE, &handle_key_release, (void *)engine);
+	// Catch des events keyboard
+	appli_key_hook_pressed(engine, KEYPRESS, &handle_key_pressed, (void *)engine);
+	appli_key_hook_release(engine, KEYRELEASE, &handle_key_release, (void *)engine);
 	
-	/* Update le player */
+	//Update le player
 	appli_update(engine, &update_player, (void *)engine);
 
-	/* Quitte le jeu des que l'utilisateur clique sur la croix rouge */
-	application_add_exit_control(engine, DESTROYNOTIFY, &exit_cub);
+	//Quitte le jeu des que l'utilisateur clique sur la croix rouge
+	//application_add_exit_control(engine, DESTROYNOTIFY, &exit_cub);
 	
 	do_save(engine);
 	
@@ -130,3 +134,4 @@ int 	main(int argc, char **argv)
 	
 	return (0);
 }
+

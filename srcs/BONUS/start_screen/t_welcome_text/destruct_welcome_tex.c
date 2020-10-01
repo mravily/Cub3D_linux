@@ -19,8 +19,8 @@
 void		destroy_welcome_tex(t_welcome_tex to_destroy)
 {
 	free(to_destroy.path);
-	free(to_destroy.img);
-	free(to_destroy.addr);
+	to_destroy.img = NULL;
+	to_destroy.addr = NULL;
 	to_destroy.width = -1;
 	to_destroy.height = -1;
 	to_destroy.bits_per_pixel = -1;
@@ -32,8 +32,8 @@ void		destroy_welcome_tex(t_welcome_tex to_destroy)
 ** Free de la structure t_welcome_tex
 */
 
-void		free_welcome_tex(t_img_welc *to_free)
+void		free_welcome_tex(t_welcome_tex *to_free)
 {
-	destroy_image(*to_free);
+	destroy_welcome_tex(*to_free);
 	free(to_free);
 }

@@ -21,9 +21,7 @@
 t_texture	create_texture(t_engine *engine, char *path)
 {
 	t_texture	texture;
-	t_config	*config;
 
-	config = engine->config;
 	texture.path = path;
 	texture.img = NULL;
 	texture.color = NULL;

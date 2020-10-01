@@ -6,16 +6,17 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 14:57:10 by nlafarge          #+#    #+#             */
-/*   Updated: 2020/05/26 12:04:12 by mravily          ###   ########.fr       */
+/*   Updated: 2020/09/26 17:44:21 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include "unistd.h"
-# include <stdlib.h>
+# include "libft.h"
 
+# include <unistd.h>
+# include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
 

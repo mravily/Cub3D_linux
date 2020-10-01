@@ -12,18 +12,25 @@
 
 #include "cub3d.h"
 
-void			appli_key_hook(t_engine *engine, int event
+void			appli_key_hook_pressed(t_engine *engine, int event
 	, int (*funct)(int, void *), void *param)
 {
-	mlx_hook(engine->vars->win_ptr, event, 0L, funct, param);
+	mlx_hook(engine->vars->win_ptr, event, KEYPRESSMASK, funct, param);
 }
 
+void			appli_key_hook_release(t_engine *engine, int event
+	, int (*funct)(int, void *), void *param)
+{
+	mlx_hook(engine->vars->win_ptr, event, KEYRELEASEMASK, funct, param);
+}
+
+/*
 void			application_add_exit_control(t_engine *engine, int event
 	, int (*funct)(void))
 {
-	mlx_hook(engine->vars->win_ptr, event, 0L, funct, (void*)0);
+	mlx_hook(engine->vars->win_ptr, event, DESTROYNOTIFYMASK, funct, (void*)0);
 }
-
+*/
 void			appli_update(t_engine *engine, int (*funct)(void *)
 	, void *param)
 {

@@ -55,15 +55,16 @@ typedef struct	s_weapon
 typedef	struct	s_bonus
 {
 	t_floor_cast		*floor_cast;
-	t_mini_map			*mini_map;
 	t_img_welc			*img_welc;
+	t_welcome_tex		*welcome;
+	t_welcome_tex		*game_over;
 	t_helmet			*helmet;
 	t_weapon			*weapon;
 }				t_bonus;
 
 char			**init_tab_path_ath_tex(void);
-t_bonus			create_bonus(t_ray_cast *ray_cast);
-t_bonus			*malloc_bonus(t_ray_cast *ray_cast);
+t_bonus			create_bonus(void);
+t_bonus			*malloc_bonus(void);
 void			destroy_bonus(t_bonus to_destroy);
 void			free_bonus(t_bonus *to_free);
 int				play_sound(char *filename);
@@ -84,4 +85,6 @@ bool 			is_backpack_sprite(t_config *config, t_player *player, int i);
 bool 			is_weapon_sprite(t_config *config, t_player *player, int i);
 void			get_item(t_player *player, t_config *config, int i);
 void			hit_by_enemy(t_player *player);
+void			free_img_welc(t_img_welc *to_free);
+
 #endif

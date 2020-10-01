@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/26 12:05:47 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/26 12:19:24 by mravily          ###   ########.fr       */
+/*   Updated: 2020/09/28 13:16:53 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void				ft_putnbr_fd(int n, int fd);
 void				error_exit(char *line, char *error);
 void				ft_add_to_tab(void *to_add, void ***tab);
 void				ft_tab_cpy(void **dst, void **src);
+void				ft_tab_dup(void **dst, void **src);
 void				ft_tab_free(char **tab);
 int					ft_tab_len(void	**tab);
 void				**ft_tab_new(int size);

@@ -13,17 +13,17 @@
 #include "cub3d.h"
 
 /*
-** Free des pointeurs de t_image
-** mise a zero des variables avec free de la structure
+** Mise a NULL et zero des variables avec free de la structure
 */
 
 void		destroy_image(t_image to_destroy)
 {
-	free(to_destroy.img);
-	free(to_destroy.addr);
+	to_destroy.img = NULL;
+	to_destroy.addr = NULL;
 	to_destroy.bits_per_pixel = 0;
 	to_destroy.line_length = 0;
 	to_destroy.endian = 0;
+	(void)to_destroy;
 }
 
 /*

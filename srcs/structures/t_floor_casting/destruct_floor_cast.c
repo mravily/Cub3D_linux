@@ -28,6 +28,7 @@ void		destroy_floor_cast(t_floor_cast to_destroy)
 	to_destroy.dist_wall = 0;
 	to_destroy.dist_player = 0;
 	to_destroy.current_floor_y = 0;
+	(void)to_destroy;
 }
 
 /*

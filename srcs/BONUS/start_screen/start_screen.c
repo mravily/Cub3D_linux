@@ -18,22 +18,22 @@ void		start_screen(t_engine *engine)
 	t_vector			coord;
 	t_vector			size;
 
+	welcome = engine->bonus->welcome;
 	coord = create_vector(0, engine->config->resolution.y / 2.5);
 	size = create_vector(engine->config->resolution.x
 		, engine->config->resolution.y / 5);
-	welcome = malloc_welcome_tex(engine, "./textures/xpm/WELCOME.xpm");
 	draw_welcome_texture(engine, welcome, coord, size);
 }
 
 void		game_over_screen(t_engine *engine)
 {
-	t_welcome_tex		*welcome;
+	t_welcome_tex		*game_over;
 	t_vector			coord;
 	t_vector			size;
 
+	game_over = engine->bonus->game_over;
 	coord = create_vector(0, engine->config->resolution.y / 2.5);
 	size = create_vector(engine->config->resolution.x
 		, engine->config->resolution.y / 5);
-	welcome = malloc_welcome_tex(engine, "./textures/xpm/GAME_OVER.xpm");
-	draw_welcome_texture(engine, welcome, coord, size);
+	draw_welcome_texture(engine, game_over, coord, size);
 }

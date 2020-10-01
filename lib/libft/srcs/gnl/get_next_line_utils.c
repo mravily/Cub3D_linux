@@ -6,25 +6,11 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 16:54:17 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/26 13:28:55 by mravily          ###   ########.fr       */
+/*   Updated: 2020/09/28 11:34:41 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-void		*ft_memcpy(void *dst, const void *src, size_t n)
-{
-	unsigned char	*tmp1;
-	unsigned char	*tmp2;
-
-	tmp1 = (unsigned char *)dst;
-	tmp2 = (unsigned char *)src;
-	if ((dst == 0 && src == 0) || (dst == src))
-		return (dst);
-	while (n--)
-		tmp1[n] = tmp2[n];
-	return (dst);
-}
 
 size_t		ft_strlen(char *str)
 {
@@ -34,25 +20,6 @@ size_t		ft_strlen(char *str)
 	while (str[len] != '\0')
 		len++;
 	return (len);
-}
-
-char		*ft_strdup(char *s)
-{
-	size_t	i;
-	size_t	len_s;
-	char	*dup;
-
-	i = 0;
-	len_s = ft_strlen(s);
-	if (!(dup = (char *)malloc(sizeof(char) * (len_s + 1))))
-		return (NULL);
-	while (i < len_s)
-	{
-		dup[i] = s[i];
-		i++;
-	}
-	dup[i] = '\0';
-	return (dup);
 }
 
 char		*ft_strjoin(char *s1, char *s2)

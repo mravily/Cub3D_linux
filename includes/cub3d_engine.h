@@ -119,5 +119,8 @@ void 			init_tex_y(t_sprite_cast *sprite_cast, t_config *config
 	, int draw_start_y, int i);
 int				screen_shot(t_engine *engine);
 void			event_pressed_bonus(int key, t_engine *engine);
-void		pre_check_file(t_engine *engine, int argc, char **argv);
+void			pre_check_file(t_engine *engine, int argc, char **argv);
+void			destroy_welcome_tex(t_welcome_tex to_destroy);
+void			free_welcome_tex(t_welcome_tex *to_free);
+
 #endif
