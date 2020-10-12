@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/11 21:41:33 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/27 16:13:39 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/10 14:25:21 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,6 @@ t_img_hlmt		create_img_hlmt(t_engine *engine, int width, int height)
 
 	img_hlmt.width = width;
 	img_hlmt.height = height;
-	img_hlmt.img = NULL;
-	img_hlmt.img = mlx_new_image(engine->vars->mlx_ptr, width, height);
-	if (img_hlmt.img == NULL)
-		error_exit_cub("img_hlmt.img == NULL"
-			, "Problem when creating the image of helmet or ath"
-			, "Check your structure");
 	img_hlmt.addr = NULL;
 	img_hlmt.addr = mlx_get_data_addr(engine->image->img
 		, &(img_hlmt.bits_per_pixel)

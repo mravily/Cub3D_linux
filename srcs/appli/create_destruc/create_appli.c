@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 17:31:06 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/27 16:55:09 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/10 14:28:26 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void		open_appli(t_engine *engine)
 
 void		resize_appli(t_engine *engine)
 {
-	mlx_destroy_window(engine->vars->mlx_ptr, engine->vars->win_ptr);
 	mlx_destroy_image(engine->vars->mlx_ptr, engine->image->img);
+	mlx_destroy_window(engine->vars->mlx_ptr, engine->vars->win_ptr);
 	create_windows(engine);
 }
 

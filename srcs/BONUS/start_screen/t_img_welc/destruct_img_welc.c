@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/11 22:15:47 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/27 16:03:24 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/10 13:19:37 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,24 @@
 ** Free des pointeurs de t_img_welcome
 */
 
-void		destroy_img_welc(t_img_welc to_destroy)
+void		destroy_img_welc(t_vars vars, t_img_welc to_destroy)
 {
 	to_destroy.width = -1;
 	to_destroy.height = -1;
-	free(to_destroy.img);
-	free(to_destroy.addr);
+	//mlx_destroy_image(vars.mlx_ptr, to_destroy.img);
+	to_destroy.addr = NULL;
 	to_destroy.bits_per_pixel = -1;
 	to_destroy.line_length = -1;
 	to_destroy.endian = -1;
+	(void)vars;
 }
 
 /*
 ** Free de la structure t_img_welc
 */
 
-void		free_img_welc(t_img_welc *to_free)
+void		free_img_welc(t_vars *vars, t_img_welc *to_free)
 {
-	destroy_image(*to_free);
+	destroy_img_welc(*vars, *to_free);
 	free(to_free);
 }

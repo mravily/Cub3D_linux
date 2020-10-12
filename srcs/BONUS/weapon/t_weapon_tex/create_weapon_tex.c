@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 12:49:16 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/27 15:14:39 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/10 12:34:53 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char				**init_tab_path_weapon_tex(void)
 	tab_path_weapon[17] = ft_strdup("./textures/xpm/WEAPON/DD_5.xpm");
 	tab_path_weapon[18] = ft_strdup("./textures/xpm/WEAPON/DD_6.xpm");
 	tab_path_weapon[19] = ft_strdup("./textures/xpm/WEAPON/DD_7.xpm");
-	tab_path_weapon[WEAPON_PART] = ft_strdup("\0");
+	tab_path_weapon[WEAPON_PART] = NULL;
 	return (tab_path_weapon);
 }
 

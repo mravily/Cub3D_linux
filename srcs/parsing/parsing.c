@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 16:57:43 by mravily           #+#    #+#             */
-/*   Updated: 2020/09/28 11:55:33 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/09 16:35:11 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,8 @@ void			pre_check_file(t_engine *engine, int argc, char **argv)
 ** si la position du joueur est indiquer
 */
 
-static void 	check_init_var(t_engine *engine)
+static void		check_init_var_2(t_engine *engine)
 {
-	if (engine->config->resolution.x == 0)
-		error_exit_cub("Resolution", "Resolution not well formatted"
-			, "Check .cub file");
-	if (engine->config->resolution.y == 0)
-		error_exit_cub("Resolution", "Resolution not well formatted"
-			, "Check .cub file");
-	if (engine->player->pos.x == 0)
-		error_exit_cub("player->pos", "Player position not indicated in map"
-			, "Check .cub file");
-	if (engine->player->pos.y == 0)
-		error_exit_cub("player->pos", "Player position not indicated in map"
-			, "Check .cub file");
-	if (engine->config->texture[NORTH].path == NULL)
-		error_exit_cub("Texture[NORTH]", "Provided path texture"
-			, "Check .cub file");
 	if (engine->config->texture[SOUTH].path == NULL)
 		error_exit_cub("Texture[SOUTH]", "Provided path texture"
 			, "Check .cub file");
@@ -84,7 +69,26 @@ static void 	check_init_var(t_engine *engine)
 		error_exit_cub("Texture[NORTH]"
 			, "Provided path rgb color or path ceiling"
 			, "Check .cub file");
+}
 
+static void		check_init_var(t_engine *engine)
+{
+	if (engine->config->resolution.x == 0)
+		error_exit_cub("Resolution", "Resolution not well formatted"
+			, "Check .cub file");
+	if (engine->config->resolution.y == 0)
+		error_exit_cub("Resolution", "Resolution not well formatted"
+			, "Check .cub file");
+	if (engine->player->pos.x == 0)
+		error_exit_cub("player->pos", "Player position not indicated in map"
+			, "Check .cub file");
+	if (engine->player->pos.y == 0)
+		error_exit_cub("player->pos", "Player position not indicated in map"
+			, "Check .cub file");
+	if (engine->config->texture[NORTH].path == NULL)
+		error_exit_cub("Texture[NORTH]", "Provided path texture"
+			, "Check .cub file");
+	check_init_var_2(engine);
 }
 
 /*
@@ -104,11 +108,9 @@ void			parsing_cub(char *argv, t_engine *engine)
 	while (ret == 1)
 	{
 		ret = get_next_line(fd, &line);
-		//if (ft_strlen(line) == 0)
-			//free(line);
 		if (ft_strlen(line) != 0)
 			check_line(line, engine);
-		//free(line);
+		free(line);
 	}
 	close(fd);
 	check_map(engine->config, engine->player);

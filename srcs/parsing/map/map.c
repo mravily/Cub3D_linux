@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/17 16:08:30 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/27 12:23:37 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/09 16:25:53 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,9 @@ void			check_map(t_config *config, t_player *player)
 
 	map = config->map;
 	index.y = 0;
+	if (map == NULL)
+		error_exit_cub("MAP", "No map provided in .cub file"
+			, "Add valid map to the .cub file");
 	while (map[(int)index.y])
 	{
 		index.x = 0;

@@ -6,13 +6,12 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/26 10:02:08 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/26 10:02:10 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/09 16:23:05 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_DEFINE_H
 # define CUB3D_DEFINE_H
-
 
 enum	e_linux_event_mask
 {
@@ -96,16 +95,16 @@ enum	e_linux_event_mask
 ** Numbers (not numeric keypad ones)
 */
 
-# define K1_KEY 18
-# define K2_KEY 19
-# define K3_KEY 20
-# define K4_KEY 21
-# define K5_KEY 23
-# define K6_KEY 22
-# define K7_KEY 26
-# define K8_KEY 28
-# define K9_KEY 25
-# define K0_KEY 29
+# define K1_KEY 49
+# define K2_KEY 50
+# define K3_KEY 51
+# define K4_KEY 52
+# define K5_KEY 53
+# define K6_KEY 54
+# define K7_KEY 55
+# define K8_KEY 56
+# define K9_KEY 57
+# define K0_KEY 48
 
 /*
 ** Special characters
@@ -194,7 +193,7 @@ enum	e_linux_event_mask
 # define LDEL_KEY 51
 # define RTN_KEY 65293
 # define RSFT_KEY 65506
-# define RCTRL_KEY 269
+# define RCTRL_KEY 65508
 # define ROPT_KEY 262
 # define RCMD_KEY 260
 # define EJ_KEY 65307

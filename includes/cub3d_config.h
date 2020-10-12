@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:03:48 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/28 12:37:41 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/10 16:18:31 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef struct	s_config
 {
 	char		*title;
 	t_vector	resolution;
-	
 	t_texture	texture[NB_TEX];
 	t_sprite	sprite[15];
 
@@ -70,8 +69,6 @@ typedef struct	s_config
 
 t_config		*malloc_config(char *title);
 t_config		create_config(char *title);
-void			destroy_config(t_config to_destroy);
-void			free_config(t_config *to_free);
 void			free_map(char **tab);
 
 #endif

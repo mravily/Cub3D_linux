@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/11 22:56:43 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/27 16:31:29 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/10 15:46:07 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,15 @@ void		destroy_helmet(t_helmet to_destroy)
 	int		i;
 
 	i = 0;
-	while (i < 18)
+	while (i < HELMET_PART)
 	{
 		destroy_helmet_tex(to_destroy.helmet_part[i]);
+		i++;
+	}
+	i = 0;
+	while (i < ATH_PART)
+	{
+		destroy_helmet_tex(to_destroy.ath_part[i]);
 		i++;
 	}
 	free_img_hlmt(to_destroy.img_hlmt);

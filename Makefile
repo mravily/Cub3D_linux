@@ -6,7 +6,7 @@
 #    By: mravily <mravily@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/04 13:40:02 by mravily           #+#    #+#              #
-#    Updated: 2020/10/01 12:55:35 by mravily          ###   ########.fr        #
+#    Updated: 2020/10/01 15:08:21 by mravily          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,9 @@
 NAME = Cub3D
 
 CC =   clang
-LIB_DIR = $(shell find lib -type d)
+LIB_DIR = lib/libft lib/mlx_linux
 INC_DIR = $(shell find includes -type d) $(shell find lib/libft/includes -type d) \
-			lib/mlx_linux/mlx.h
+			lib/mlx_linux/
 # Chercher le dossier srcs
 SRC_DIR = $(shell find srcs -type d)
 # Nom du dossier qui contiendra les fichiers .o
@@ -38,11 +38,10 @@ LIB = ft mlx_Linux mlx
 
 vpath %.c $(foreach dir, $(SRC_DIR), $(dir):)
 
-LINUXFLAG	= -lm -lX11 -lXext
+LINUXFLAG	= -lm -lX11 -lXext -lbsd
 CFLAGS = -Werror -Wall -Wextra -fsanitize=address -g
 IFLAGS = $(foreach dir, $(INC_DIR), -I$(dir) )
-LFLAGS = $(foreach dir, $(LIB_DIR), -L$(dir) ) $(foreach lib, $(LIB), -l$(lib)) $(LINUXFLAG)
-
+LFLAGS = $(foreach dir, $(LIB_DIR), -L$(dir) ) $(foreach lib, $(LIB), -l $(lib))
 
 # Colors
 
@@ -56,10 +55,8 @@ _CYAN=	$'\e[36m
 _WHITE=	$'\e[37m
 
 #$(CC) $(LFLAGS) $(IFLAGS) $(OBJ) -o $(NAME)
-all		:
-	$(CC) $(LFLAGS) $(IFLAGS) $(OBJ) -o $(NAME)
-	
-	
+all		: $(NAME)
+
 show	:
 	@echo "SRC_DIR : $(SRC_DIR)\n"
 	@echo "LIB_DIR : $(LIB_DIR)\n"
@@ -73,11 +70,11 @@ show	:
 	@echo "$(_BLUE)Compiling : \n$(_YELLOW)$(CC) $(CFLAGS) $(OBJ) $(LFLAGS) -o $(NAME)$(_WHITE)"
 
 $(OBJ_DIR)/%.o : %.c
-	mkdir -p $(OBJ_DIR)
-	gcc $(CFLAGS) $(IFLAGS) -c $< -o $@
+	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(IFLAGS) $(LFLAGS) $(OBJ) -o $@
+$(NAME): $(OBJ) $(INC_DIR)
+	@$(CC) $(CFLAGS) $(LFLAGS) $(OBJ) -o $@ lib/mlx_linux/libmlx.a lib/mlx_linux/libmlx_Linux.a lib/libft/libft.a $(LINUXFLAG)
 
 debug : $(NAME)
 	@./$(NAME)
@@ -91,10 +88,11 @@ re-install :
 	@make -C lib/mlx_linux re
 
 fclean-install:
-	@$(foreach dir, $(LIB_DIR), make -C $(dir) fclean;)
+	@make -C lib/libft clean
+	@make -C lib/mlx_linux clean
 
 clean	:
-	@rm -rf $(OBJ)
+	@rm -rf $(OBJ_DIR)
 
 fclean	: clean
 	@rm -rf $(NAME)

@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 19:46:28 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/29 15:22:51 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/09 15:47:05 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void		get_resolution(char *line, t_config *config)
 	else
 		error_exit_cub(line, "2 lines of resolution in the .cub file"
 			, "Find this line in the .cub file");
-	free(tab);
+	ft_tab_free(tab);
 }
 
 /*

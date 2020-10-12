@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 13:24:40 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/27 15:11:43 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/10 12:35:32 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 void		destroy_weapon_tex(t_weapon_tex to_destroy)
 {
-	free(to_destroy.path);
+	to_destroy.path = NULL;
 	to_destroy.img = NULL;
 	to_destroy.addr = NULL;
 	to_destroy.width = -1;
@@ -34,6 +34,5 @@ void		destroy_weapon_tex(t_weapon_tex to_destroy)
 
 void		free_weapon_tex(t_weapon_tex *to_free)
 {
-	destroy_weapon_tex(*to_free);
 	free(to_free);
 }

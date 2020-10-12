@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/11 21:42:59 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/27 16:24:20 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/09 15:34:42 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char			**init_tab_path_helmet_tex(void)
 	tab_path_helmet[14] = ft_strdup("./textures/xpm/HELMET/HUD_LEFT.xpm");
 	tab_path_helmet[15] = ft_strdup("./textures/xpm/HELMET/HUD_RIGHT.xpm");
 	tab_path_helmet[16] = ft_strdup("./textures/xpm/ATH/RUN.xpm");
-	tab_path_helmet[HELMET_PART] = ft_strdup("\0");
+	tab_path_helmet[HELMET_PART] = NULL;
 	return (tab_path_helmet);
 }
 

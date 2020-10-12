@@ -6,17 +6,25 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 17:33:44 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/29 14:47:56 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/12 11:08:28 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+/*
+** Catch les event clavier de touche presser
+*/
 
 void			appli_key_hook_pressed(t_engine *engine, int event
 	, int (*funct)(int, void *), void *param)
 {
 	mlx_hook(engine->vars->win_ptr, event, KEYPRESSMASK, funct, param);
 }
+
+/*
+** Catch les event clavier de touche relacher
+*/
 
 void			appli_key_hook_release(t_engine *engine, int event
 	, int (*funct)(int, void *), void *param)
@@ -25,16 +33,13 @@ void			appli_key_hook_release(t_engine *engine, int event
 }
 
 /*
-void			application_add_exit_control(t_engine *engine, int event
-	, int (*funct)(void))
-{
-	mlx_hook(engine->vars->win_ptr, event, DESTROYNOTIFYMASK, funct, (void*)0);
-}
+** Catch l'event quand l'utilisateur clique sur la croix rouge de la fenetre
 */
-void			appli_update(t_engine *engine, int (*funct)(void *)
-	, void *param)
+
+void			application_add_exit_control(t_engine *engine, int event
+	, int (*funct)(void *), void *param)
 {
-	mlx_loop_hook(engine->vars->mlx_ptr, funct, param);
+	mlx_hook(engine->vars->win_ptr, event, DESTROYNOTIFYMASK, funct, param);
 }
 
 /*

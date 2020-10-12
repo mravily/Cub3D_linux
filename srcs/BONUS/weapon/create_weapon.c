@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 13:19:58 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/27 15:20:47 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/10 15:40:35 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_weapon		create_weapon(t_engine *engine)
 		result.weapon[i] = create_weapon_tex(engine, path_weapon[i]);
 		i++;
 	}
-	free(path_weapon);
+	ft_tab_free(path_weapon);
 	result.part_mini_gun = 12;
 	return (result);
 }
@@ -40,7 +40,7 @@ t_weapon		*malloc_weapon(t_engine *engine)
 
 	weapon = (t_weapon *)malloc(sizeof(t_weapon));
 	if (weapon == NULL)
-		return (NULL);
+		error_exit_cub("Struct weapon", "Echec lors du mallocage", "check you structure");
 	*weapon = create_weapon(engine);
 	return (weapon);
 }

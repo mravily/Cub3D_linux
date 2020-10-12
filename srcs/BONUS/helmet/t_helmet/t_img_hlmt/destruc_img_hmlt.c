@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/11 22:42:02 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/27 16:12:29 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/10 15:42:34 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void		destroy_img_hlmt(t_img_hlmt to_destroy)
 {
 	to_destroy.width = -1;
 	to_destroy.height = -1;
-	to_destroy.img = NULL;
 	to_destroy.addr = NULL;
 	to_destroy.bits_per_pixel = -1;
 	to_destroy.line_length = -1;

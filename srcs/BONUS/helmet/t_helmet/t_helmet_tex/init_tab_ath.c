@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 16:24:44 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/27 16:30:41 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/09 15:33:48 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void			init_tab_path_ath_tex_part_3(char **tab_path_ath)
 	tab_path_ath[42] = ft_strdup("./textures/xpm/ATH/Cmpt_150.xpm");
 	tab_path_ath[43] = ft_strdup("./textures/xpm/ATH/Cmpt_175.xpm");
 	tab_path_ath[44] = ft_strdup("./textures/xpm/ATH/Cmpt_200.xpm");
-	tab_path_ath[ATH_PART] = ft_strdup("\0");
+	tab_path_ath[ATH_PART] = NULL;
 }
 
 void			init_tab_path_ath_tex_part_2(char **tab_path_ath)

@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 17:14:51 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/26 18:33:18 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/10 14:55:44 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ static void			set_sprite_dist(t_config *config, t_player *player)
 }
 
 /*
-** Fonction utiliser pour trier les sprites
+** Fonction utiliser pour trier les sprites selon leur distance
+** par rapport au joueur
 */
 
 static void			short_sprites(t_config *config)

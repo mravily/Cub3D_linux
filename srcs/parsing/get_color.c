@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 19:06:42 by mravily           #+#    #+#             */
-/*   Updated: 2020/06/14 15:18:10 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/09 15:41:01 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,11 +120,10 @@ void			get_color(int id, char *line, t_engine *engine)
 	tab = ft_strsplit(line, ' ');
 	while (tab[len_tab])
 		len_tab++;
-	printf("len_tab = %d\n", len_tab);
 	catch_error_color(id, len_tab, line);
 	if (tab[0][0] >= '0' && tab[0][0] <= '9')
 		get_rgb(id, tab[0], config);
 	else if (tab[0][0] == '.' && tab[0][1] == '/')
 		get_path_color(id, tab[0], engine);
-	free(tab);
+	ft_tab_free(tab);
 }

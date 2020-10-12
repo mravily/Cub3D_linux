@@ -6,35 +6,28 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/31 17:27:36 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/29 13:10:24 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/10 16:26:25 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 /*
-** Free de la map
+** Free et remise a zero des elements de t_config
 */
 
-void		free_map(char **map)
+void		destroy_config(t_vars vars, t_config to_destroy)
 {
 	int		i;
 
-	i = -1;
-	while (map[++i] != NULL)
-		free(map[i]);
-	free(map);
-}
-
-/*
-** Free er remise a zero des elements de t_config
-*/
-
-void		destroy_config(t_config to_destroy)
-{
+	i = 0;
+	while (i < NB_TEX)
+	{
+		destroy_texture(vars, to_destroy.texture[i]);
+		i++;
+	}
 	free(to_destroy.title);
 	free_vector(&to_destroy.resolution);
-	free_texture(to_destroy.texture);
 	free_sprite(to_destroy.sprite);
 	free_color(&to_destroy.floor_color);
 	free_color(&to_destroy.ceiling_color);
@@ -51,19 +44,25 @@ void		destroy_config(t_config to_destroy)
 }
 
 /*
-** Free de la structure t_config
+** Free de la map
 */
 
-void		free_config(t_config *to_free)
+void		free_map(char **map)
 {
 	int		i;
 
-	i = 0;
-	while (i < NB_TEX)
-	{
-		to_free->texture[i] = init_texture();
-		i++;
-	}
-	destroy_config(*to_free);
+	i = -1;
+	while (map[++i] != NULL)
+		free(map[i]);
+	free(map);
+}
+
+/*
+** Free de la structure t_config
+*/
+
+void		free_config(t_vars *vars, t_config *to_free)
+{
+	destroy_config(*vars, *to_free);
 	free(to_free);
 }

@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 21:42:51 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/26 11:11:12 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/10 16:16:06 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ typedef struct	s_texture
 }				t_texture;
 
 t_texture		init_texture(void);
-void			destroy_texture(t_texture to_destroy);
-void			free_texture(t_texture *to_free);
 t_color			texture_get_color(t_texture *texture, int x, int y);
 
 #endif

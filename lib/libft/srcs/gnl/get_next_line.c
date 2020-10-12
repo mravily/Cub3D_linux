@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 16:54:30 by mravily           #+#    #+#             */
-/*   Updated: 2020/09/28 11:52:38 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/09 11:44:55 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ int				get_next_line_brother(int fd, char **line)
 	while ((i[1] = read(fd, buf, BUFFER_SIZE)) > 0 || i[0] != -1)
 	{
 		buf[i[1]] = '\0';
-		rest = ft_strjoin(rest, buf);
+		if (ft_strlen(buf) > 0)
+			rest = ft_strjoin(rest, buf);
 		if (rest == NULL)
 			return (-1);
 		i[0] = check_backslash_n(buf, rest);

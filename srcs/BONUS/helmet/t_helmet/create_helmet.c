@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/11 19:35:36 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/27 16:35:34 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/09 17:03:23 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,28 @@ t_helmet		create_helmet(t_engine *engine)
 	t_helmet		result;
 	int				i;
 	char			**path_helmet;
+	char			**path_ath;
 
 	path_helmet = init_tab_path_helmet_tex();
 	i = 0;
 	while (i < HELMET_PART)
 	{
-		result.helmet_part[i] = create_helmet_tex(engine, path_helmet[i]);
+		result.helmet_part[i] = create_helmet_tex(engine, ft_strdup(path_helmet[i]));
 		i++;
 	}
-	free(path_helmet);
-	path_helmet = init_tab_path_ath_tex();
+	ft_tab_free(path_helmet);
+	path_ath = init_tab_path_ath_tex();
 	i = 0;
 	while (i < ATH_PART)
 	{
-		result.ath_part[i] = create_helmet_tex(engine, path_helmet[i]);
+		result.ath_part[i] = create_helmet_tex(engine, ft_strdup(path_ath[i]));
 		i++;
 	}
+	ft_tab_free(path_ath);
 	result.id_part_helmet = 0;
 	result.put_helmet = 0;
 	result.img_hlmt = malloc_img_hlmt(engine, engine->config->resolution.x
 		, engine->config->resolution.y);
-	free(path_helmet);
 	return (result);
 }
 

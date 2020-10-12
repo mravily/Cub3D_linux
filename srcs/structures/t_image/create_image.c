@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/17 14:02:51 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/26 16:05:23 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/10 14:47:54 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ t_image		create_image(void)
 
 void		init_image(t_engine *engine, t_image *image, int width, int height)
 {
+	image->img = NULL;
 	image->img = mlx_new_image(engine->vars->mlx_ptr, width, height);
 	if (image->img == NULL)
 		error_exit_cub("engine->image->img == NULL"

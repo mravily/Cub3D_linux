@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/12 17:20:09 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/27 11:36:02 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/05 10:41:55 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 static void		set_north_player(t_player *player)
 {
 	player->dir = create_vector(0, -1);
-	player->start_dir = create_vector(0, -1);
+	player->start_dir = player->dir;
 	player->plane = create_vector(0.66, 0);
-	player->start_plane = create_vector(0.66, 0);
+	player->start_plane = player->plane;
 }
 
 /*
@@ -31,9 +31,9 @@ static void		set_north_player(t_player *player)
 static void		set_south_player(t_player *player)
 {
 	player->dir = create_vector(0, 1);
-	player->start_dir = create_vector(0, 1);
+	player->start_dir = player->dir;
 	player->plane = create_vector(-0.66, 0);
-	player->start_plane = create_vector(0.66, 0);
+	player->start_plane = player->plane;
 }
 
 /*
@@ -43,9 +43,9 @@ static void		set_south_player(t_player *player)
 static void		set_east_player(t_player *player)
 {
 	player->dir = create_vector(1, 0);
-	player->start_dir = create_vector(1, 0);
+	player->start_dir = player->dir;
 	player->plane = create_vector(0, 0.66);
-	player->start_plane = create_vector(0.66, 0);
+	player->start_plane = player->plane;
 }
 
 /*
@@ -55,9 +55,9 @@ static void		set_east_player(t_player *player)
 static void		set_west_player(t_player *player)
 {
 	player->dir = create_vector(-1, 0);
-	player->start_dir = create_vector(-1, 0);
+	player->start_dir = player->dir;
 	player->plane = create_vector(0, -0.66);
-	player->start_plane = create_vector(0.66, 0);
+	player->start_plane = player->plane;
 }
 
 /*

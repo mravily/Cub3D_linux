@@ -6,14 +6,16 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/12 21:10:45 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/26 18:48:01 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/10 14:55:14 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 /*
-** Calcul de la hauteur du sprite et de son pixel de depart et de fin sur y
+** Calcule la taille du sprite sur l'axe y pour le scaler a la bonne dimension
+** 	sprite_cast->v_move_screen = (int)(config->texture[SPRITE].height
+**			/ sprite_cast->transform_y);
 */
 
 static void			calculate_sprite_height(t_sprite_cast *sprite_cast
@@ -21,8 +23,7 @@ static void			calculate_sprite_height(t_sprite_cast *sprite_cast
 {
 	if (config->sprite[i].id_texture == BASIC_SP)
 	{
-		sprite_cast->v_move_screen = (int)(config->texture[SPRITE].height
-			/ sprite_cast->transform_y);
+		sprite_cast->v_move_screen = (sprite_cast->transform_y);
 		sprite_cast->sprite_height = (int)fabs(
 			(config->resolution.y / sprite_cast->transform_y));
 	}
@@ -58,7 +59,7 @@ static void			calculate_sprite_width(t_sprite_cast *sprite_cast
 {
 	if (config->sprite[i].id_texture == BASIC_SP)
 		sprite_cast->sprite_width = (int)fabs(
-			(config->resolution.y / sprite_cast->transform_y));
+			(config->resolution.y / sprite_cast->transform_y) / 2);
 	else
 		calculate_other_sprite_width(sprite_cast, config, i);
 }

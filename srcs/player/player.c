@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/17 16:02:22 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/27 10:26:47 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/01 15:22:45 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int				update_player(void *params)
 	world_map = engine->config->map;
 	rotate_in_game(engine->player, engine->event);
 	move_in_game(engine->player, engine->event, world_map);
+	mlx_do_sync(engine->vars->mlx_ptr);
 	render_game(engine);
 	return (0);
 }
