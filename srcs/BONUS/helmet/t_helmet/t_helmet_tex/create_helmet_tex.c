@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/11 21:42:59 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/09 15:34:42 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/12 11:26:29 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char			**init_tab_path_helmet_tex(void)
 ** - Les bitmap de l'image stocker en int*
 */
 
-t_helmet_tex	create_helmet_tex(t_engine *engine, char *path)
+t_helmet_tex	create_hlmt_tex(t_engine *engine, char *path)
 {
 	t_helmet_tex	helmet_tex;
 
@@ -79,6 +79,6 @@ t_helmet_tex	*malloc_helmet_tex(t_engine *engine, char *path)
 	helmet_tex = (t_helmet_tex *)malloc(sizeof(t_helmet_tex));
 	if (helmet_tex == NULL)
 		return (NULL);
-	*helmet_tex = create_helmet_tex(engine, path);
+	*helmet_tex = create_hlmt_tex(engine, path);
 	return (helmet_tex);
 }

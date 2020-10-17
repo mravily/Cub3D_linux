@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/11 01:55:36 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/10 12:20:30 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/12 12:20:13 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void			calculate_other_sprite_height(t_sprite_cast *sprite_cast
 	, t_config *config, int i);
 void			calculate_other_sprite_width(t_sprite_cast *sprite_cast
 	, t_config *config, int i);
-	
+
 void			re_set_dir_player(int key, t_player *player, t_event *event);
 
 bool			is_shield_sprite(t_config *config, t_player *player, int i);

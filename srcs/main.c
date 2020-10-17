@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 16:57:48 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/10 15:28:28 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/12 12:05:40 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,7 @@ void			engine_bonus(t_engine *engine)
 
 int				main(int argc, char **argv)
 {
-
-	t_engine 	*engine;
+	t_engine	*engine;
 
 	engine = malloc_engine("Cub3D (c)");
 	open_appli(engine);
@@ -81,13 +80,15 @@ int				main(int argc, char **argv)
 	engine_bonus(engine);
 	if (!(engine->sprite_cast->z_buffer = malloc(sizeof(float *)
 		* engine->config->resolution.x + 1)))
-			error_exit_cub("", "malloc z_buffer failed", "");
-	appli_key_hook_pressed(engine, KEYPRESS, &handle_key_pressed, (void *)engine);
-	appli_key_hook_release(engine, KEYRELEASE, &handle_key_release, (void *)engine);
+		error_exit_cub("", "malloc z_buffer failed", "");
+	appli_key_hook_pressed(engine, KEYPRESS, &handle_key_pressed
+		, (void *)engine);
+	appli_key_hook_release(engine, KEYRELEASE, &handle_key_release
+		, (void *)engine);
+	application_add_exit_control(engine, DESTROYNOTIFY, &exit_cub
+		, (void *)engine);
 	appli_update(engine, &update_player, (void *)engine);
-	application_add_exit_control(engine, DESTROYNOTIFY, &exit_cub, (void *)engine);
 	do_save(engine);
 	run_appli(engine);
-	
 	return (0);
 }

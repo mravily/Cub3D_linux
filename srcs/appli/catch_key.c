@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 17:33:44 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/12 11:08:28 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/12 12:12:22 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,16 @@ void			application_add_exit_control(t_engine *engine, int event
 	, int (*funct)(void *), void *param)
 {
 	mlx_hook(engine->vars->win_ptr, event, DESTROYNOTIFYMASK, funct, param);
+}
+
+/*
+** Verifie si de nouvelle touche sont utiliser pour update l'image
+*/
+
+void			appli_update(t_engine *engine, int (*funct)(void *)
+	, void *param)
+{
+	mlx_loop_hook(engine->vars->mlx_ptr, funct, param);
 }
 
 /*

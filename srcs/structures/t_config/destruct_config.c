@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/31 17:27:36 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/10 16:26:25 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/12 11:28:13 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 ** Free et remise a zero des elements de t_config
 */
 
-void		destroy_config(t_vars vars, t_config to_destroy)
+void		destroy_config(t_config to_destroy)
 {
 	int		i;
 
 	i = 0;
 	while (i < NB_TEX)
 	{
-		destroy_texture(vars, to_destroy.texture[i]);
+		destroy_texture(to_destroy.texture[i]);
 		i++;
 	}
 	free(to_destroy.title);
@@ -61,8 +61,8 @@ void		free_map(char **map)
 ** Free de la structure t_config
 */
 
-void		free_config(t_vars *vars, t_config *to_free)
+void		free_config(t_config *to_free)
 {
-	destroy_config(*vars, *to_free);
+	destroy_config(*to_free);
 	free(to_free);
 }

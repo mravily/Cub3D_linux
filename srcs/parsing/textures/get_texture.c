@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 17:58:53 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/09 15:28:54 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/12 12:19:03 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void			get_texture(int id, char *line, t_engine *engine)
 	len_tab = 0;
 	tab = ft_strsplit(line, ' ');
 	while (tab[len_tab])
-		len_tab++;	
+		len_tab++;
 	if (len_tab > 1 || len_tab == 0)
 		error_exit_cub(id == 5 ? "Sprite" : "Wall"
 			, "Sprite or Wall path not well formatted"

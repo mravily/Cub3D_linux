@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 16:54:17 by mravily           #+#    #+#             */
-/*   Updated: 2020/09/28 11:34:41 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/17 14:56:30 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ char		*ft_strjoin(char *s1, char *s2)
 	return (new_s);
 }
 
-void		ft_place(char *rest, char *tmp)
+char		*get_place(char *rest, char *tmp)
 {
-	printf("test");
 	free(rest);
-	printf("test1");
-	rest = tmp;
+	rest = ft_strdup(tmp);
+	free(tmp);
+	return (rest);
 }

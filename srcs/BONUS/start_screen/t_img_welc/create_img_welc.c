@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/11 22:14:03 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/10 14:25:26 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/12 12:18:26 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,3 @@ t_img_welc		*malloc_img_welc(t_engine *engine, int width, int height)
 	*img_welc = create_img_welc(engine, width, height);
 	return (img_welc);
 }
-

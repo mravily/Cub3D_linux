@@ -58,7 +58,7 @@ clean:
 				@echo "clean"
 
 fclean:			clean
-				@rm -f $(NAME)
+				rm -rf $(NAME)
 				@echo "fclean"
 
 re:				fclean all

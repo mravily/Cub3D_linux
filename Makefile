@@ -6,7 +6,7 @@
 #    By: mravily <mravily@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/04 13:40:02 by mravily           #+#    #+#              #
-#    Updated: 2020/10/01 15:08:21 by mravily          ###   ########.fr        #
+#    Updated: 2020/10/17 14:58:51 by mravily          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,7 +88,7 @@ re-install :
 	@make -C lib/mlx_linux re
 
 fclean-install:
-	@make -C lib/libft clean
+	@make -C lib/libft fclean
 	@make -C lib/mlx_linux clean
 
 clean	:

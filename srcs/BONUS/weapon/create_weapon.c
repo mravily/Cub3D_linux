@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 13:19:58 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/10 15:40:35 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/12 12:17:52 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ t_weapon		*malloc_weapon(t_engine *engine)
 
 	weapon = (t_weapon *)malloc(sizeof(t_weapon));
 	if (weapon == NULL)
-		error_exit_cub("Struct weapon", "Echec lors du mallocage", "check you structure");
+		error_exit_cub("Struct weapon", "Echec lors du mallocage"
+			, "check you structure");
 	*weapon = create_weapon(engine);
 	return (weapon);
 }
