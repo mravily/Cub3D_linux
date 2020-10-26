@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destruct_texture.c                                 :+:      :+:    :+:   */
+/*   how_many_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/09 21:54:27 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/26 16:24:45 by mravily          ###   ########.fr       */
+/*   Created: 2020/10/26 15:26:51 by mravily           #+#    #+#             */
+/*   Updated: 2020/10/26 17:54:31 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-/*
-** Mise a zero des variables de la struct avant free
-*/
-
-void	destroy_texture(t_texture to_destroy)
+int		how_many_char(char *str, char c)
 {
-	to_destroy.path = NULL;
-	if (to_destroy.img != NULL)
-		mlx_destroy_image(g_engine->vars->mlx_ptr, to_destroy.img);
-	to_destroy.color = NULL;
-}
+	int		i;
+	int		cmpt;
 
-/*
-** Free de la structure envoyer en parametre
-*/
-
-void	free_texture(t_texture *to_free)
-{
-	destroy_texture(*to_free);
-	free(to_free);
+	cmpt = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			cmpt++;
+		i++;
+	}
+	return (cmpt);
 }

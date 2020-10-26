@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/11 00:30:07 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/22 13:24:53 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/26 16:47:50 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ void		draw_ceiling_and_floor(int x, float height)
 	y = draw_end;
 	while (y < height)
 	{
-		if (g_engine->config->ceiling_w == rgb)
-			my_mlx_pixel_put(x, y, floor);
 		if (g_engine->config->floor_w == rgb)
+			my_mlx_pixel_put(x, y, floor);
+		if (g_engine->config->ceiling_w == rgb)
 			my_mlx_pixel_put(x, height - y - 1, ceiling);
 		y++;
 	}

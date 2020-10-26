@@ -4,7 +4,7 @@ SO ./textures/xpm/BASIC/MARBFAC3.xpm
 EA ./textures/xpm/BASIC/MARBLE3.xpm
 WE ./textures/xpm/BASIC/MARBFACE.xpm
 S ./textures/xpm/SPRITE_HAUT.xpm
-CF 255,200,200
+FC 255,200,200
 F ./textures/xpm/BASIC/FLOOR7_2.xpm
 
 11111111111111111

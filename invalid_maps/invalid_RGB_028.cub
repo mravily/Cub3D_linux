@@ -5,7 +5,7 @@ EA ./textures/xpm/BASIC/MARBLE3.xpm
 WE ./textures/xpm/BASIC/MARBFACE.xpm
 S ./textures/xpm/SPRITE_HAUT.xpm
 C 255,200,200
-F ./textures/xpm/BASIC/FLOOR7_2.xpm, 200
+F 122,122 122
 
 11111111111111111
 10000000000000001

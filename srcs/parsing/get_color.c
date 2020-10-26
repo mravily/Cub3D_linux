@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 19:06:42 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/17 18:07:37 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/26 18:03:09 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,17 @@
 
 static void		check_if_rgb(int *rgb, char **tab, char *color)
 {
+	check_tab_line("0123456789", tab);
 	rgb[0] = ft_atoi(tab[0]);
-	if (rgb[0] < 0 && rgb[0] > 255)
+	if (rgb[0] < 0 || rgb[0] > 255)
 		error_exit_cub(color, "Colour red badly formatted"
 			, "Find this line in the .cub file");
 	rgb[1] = ft_atoi(tab[1]);
-	if (rgb[1] < 0 && rgb[1] > 255)
+	if (rgb[1] < 0 || rgb[1] > 255)
 		error_exit_cub(color, "Colour green badly formatted"
 			, "Find this line in the .cub file");
 	rgb[2] = ft_atoi(tab[2]);
-	if (rgb[2] < 0 && rgb[2] > 255)
+	if (rgb[2] < 0 || rgb[2] > 255)
 		error_exit_cub(color, "Colour blue badly formatted"
 			, "Find this line in the .cub file");
 }
@@ -39,25 +40,17 @@ static void		check_if_rgb(int *rgb, char **tab, char *color)
 static void		check_rgb_color(int id, char *color, t_config *config)
 {
 	char	**tab;
-	int		len_tab;
 	int		rgb[3];
 
 	tab = NULL;
-	len_tab = 0;
 	tab = ft_strsplit(color, ',');
-	while (tab[len_tab])
-		len_tab++;
-	if ((len_tab > 3 || len_tab < 3) && id == 0)
-		error_exit_cub(color, "Invalid RGB floor color"
-			, "Find this line in the .cub file");
-	if ((len_tab > 3 || len_tab < 3) && id == 1)
-		error_exit_cub(color, "Invalid RGB ceiling color"
-			, "Find this line in the .cub file");
+	error_rgb(id, tab, color);
 	check_if_rgb(rgb, tab, color);
 	if (id == 6)
 		config->floor_color = create_color(rgb[0], rgb[1], rgb[2]);
 	else
 		config->ceiling_color = create_color(rgb[0], rgb[1], rgb[2]);
+	ft_tab_free(tab);
 }
 
 /*
@@ -89,15 +82,23 @@ static void		get_path_color(int id, char *path_color)
 {
 	if (id == 6 && g_engine->config->floor_w == null)
 	{
-		g_engine->config->floor_w = path;
 		if (check_texture_path(path_color) == true)
+		{
+			g_engine->config->floor_w = path;
 			texture_assignment(id, path_color);
+		}
+		else
+			error_path(id, path_color);
 	}
 	else if (id == 7 && g_engine->config->ceiling_w == null)
 	{
-		g_engine->config->ceiling_w = path;
 		if (check_texture_path(path_color) == true)
+		{
+			g_engine->config->ceiling_w = path;
 			texture_assignment(id, path_color);
+		}
+		else
+			error_path(id, path_color);
 	}
 	else
 		error_exit_cub(path_color, "Path (floor or ceiling) already attribute"
@@ -116,14 +117,15 @@ void			get_color(int id, char *line)
 
 	config = g_engine->config;
 	len_tab = 0;
-	tab = NULL;
 	tab = ft_strsplit(line, ' ');
-	while (tab[len_tab])
-		len_tab++;
-	catch_error_color(id, len_tab, line);
+	error_color(id, tab, line);
 	if (tab[0][0] >= '0' && tab[0][0] <= '9')
 		get_rgb(id, tab[0], config);
 	else if (tab[0][0] == '.' && tab[0][1] == '/')
 		get_path_color(id, tab[0]);
+	else
+		error_exit_cub(line
+			, "Line not well formatted"
+			, "Find this line in the .cub file");
 	ft_tab_free(tab);
 }

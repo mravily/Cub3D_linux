@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/31 18:47:08 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/22 14:15:57 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/26 17:49:07 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ void				dispatch(char *line, int i)
 {
 	if (is_line_texture(line, i) == true)
 		line_texture(line, i);
-	else if (is_line_floor(line, i) == true)
+	else if (is_floor_line(line, i) == true)
 		line_floor(line, i);
-	else if (is_line_ceiling(line, i == true))
+	else if (is_ceiling_line(line, i == true))
 		line_ceiling(line, i);
 }

@@ -6,14 +6,56 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/14 15:18:38 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/26 12:57:37 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/26 18:01:26 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void			catch_error_color(int id, int len_tab, char *line)
+void			error_path(int id, char *line)
 {
+	if (id == 6)
+		error_exit_cub(line
+			, "Floor line not well formatted"
+			, "Find this line in the .cub file");
+	if (id == 7)
+		error_exit_cub(line
+			, "Ceiling line not well formatted"
+			, "Find this line in the .cub file");
+}
+
+void			error_rgb(int id, char **tab, char *color)
+{
+	int		len_tab;
+	int		cmpt;
+
+	cmpt = how_many_char(color, ',');
+	len_tab = ft_tab_len((void **)tab);
+	if ((cmpt < 2 || cmpt > 2
+		|| len_tab < 3 || len_tab > 3) && id == 0)
+		error_exit_cub(color, "Invalid RGB floor color"
+			, "Find this line in the .cub file");
+	if ((cmpt < 2 || cmpt > 2
+		|| len_tab < 3 || len_tab > 3) && id == 1)
+		error_exit_cub(color, "Invalid RGB ceiling color"
+			, "Find this line in the .cub file");
+	if ((cmpt < 2 || cmpt > 2
+		|| len_tab < 3 || len_tab > 3) && id == 6)
+		error_exit_cub(color
+			, "Floor line not well formatted"
+			, "Find this line in the .cub file");
+	if ((cmpt < 2 || cmpt > 2
+		|| len_tab < 3 || len_tab > 3) && id == 7)
+		error_exit_cub(color
+			, "Ceiling line not well formatted"
+			, "Find this line in the .cub file");
+}
+
+void			error_color(int id, char **tab, char *line)
+{
+	int		len_tab;
+
+	len_tab = ft_tab_len((void **)tab);
 	if ((len_tab < 1 || len_tab > 1) && id == 6)
 		error_exit_cub(line
 			, "Floor line not well formatted"

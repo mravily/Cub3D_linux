@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 19:33:44 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/17 18:26:50 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/26 16:49:12 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,24 @@ static void				init_current_floor(t_floor_cast *floor_cast
 static void				init_floor_tex(t_floor_cast *floor_cast
 	, t_config *config)
 {
-	floor_cast->floor_tex_x = (int)(floor_cast->current_floor_x
-		* config->texture[FLOOR].width)
-		% config->texture[FLOOR].width;
-	floor_cast->floor_tex_y = (int)(floor_cast->current_floor_y
-		* config->texture[FLOOR].height)
-		% config->texture[FLOOR].height;
+	if (g_engine->config->floor_w == path)
+	{
+		floor_cast->floor_tex_x = (int)(floor_cast->current_floor_x
+			* config->texture[FLOOR].width)
+			% config->texture[FLOOR].width;
+		floor_cast->floor_tex_y = (int)(floor_cast->current_floor_y
+			* config->texture[FLOOR].height)
+			% config->texture[FLOOR].height;
+	}
+	else if (g_engine->config->ceiling_w == path)
+	{
+		floor_cast->floor_tex_x = (int)(floor_cast->current_floor_x
+			* config->texture[CEILING].width)
+			% config->texture[CEILING].width;
+		floor_cast->floor_tex_y = (int)(floor_cast->current_floor_y
+			* config->texture[CEILING].height)
+			% config->texture[CEILING].height;
+	}
 }
 
 /*
@@ -89,7 +101,7 @@ static void				draw_tex_floor_ceiling(t_floor_cast *floor_cast
 
 	height = g_engine->config->resolution.y;
 	config = g_engine->config;
-	if (g_engine->config->floor_w == path)
+	if (config->floor_w == path)
 	{
 		if (floor_cast->floor_tex_x >= 0 && floor_cast->floor_tex_y >= 0)
 			my_mlx_pixel_put_int(x, y
@@ -97,7 +109,7 @@ static void				draw_tex_floor_ceiling(t_floor_cast *floor_cast
 					* floor_cast->floor_tex_y
 					+ floor_cast->floor_tex_x]);
 	}
-	if (g_engine->config->ceiling_w == path)
+	if (config->ceiling_w == path)
 	{
 		if (floor_cast->floor_tex_x >= 0 && floor_cast->floor_tex_y >= 0)
 			my_mlx_pixel_put_int(x, height - y - 1

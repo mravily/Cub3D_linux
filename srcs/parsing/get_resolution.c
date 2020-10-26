@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 19:46:28 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/26 13:00:26 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/26 17:10:59 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Vérifie si le char présent dans la line sont uniquement ceux autoriser
 */
 
-void		check_char_line(char *char_allowed, char **tab)
+void		check_tab_line(char *char_allowed, char **tab)
 {
 	int		i;
 	int		y;
@@ -33,8 +33,8 @@ void		check_char_line(char *char_allowed, char **tab)
 			y++;
 		}
 		else
-			error_exit_cub(tab[y], "Resolution not well formatted"
-				, "check resolution line in .cub file and fix it");
+			error_exit_cub(tab[y], "Line not well formatted"
+				, "check in .cub file and fix it");
 	}
 }
 
@@ -42,7 +42,7 @@ void		catch_error_resolution(char **tab, char *line)
 {
 	if (ft_tab_len((void**)tab) <= 1 || ft_tab_len((void**)tab) > 2)
 		error_resolution(0, line);
-	check_char_line("0123456789", tab);
+	check_tab_line("0123456789", tab);
 }
 
 void		resize_resolution(double *width, double *height, int s_width

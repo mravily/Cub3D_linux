@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 19:42:14 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/26 13:02:05 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/26 18:02:17 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,27 +52,9 @@ bool			check_texture_path(char *path)
 		return (true);
 }
 
-/*
-** parsing des lines du fichier .cub
-*/
-
-static bool		check_if_well_formated(int id, char *char_allowed
-	, char *line)
-{
-	int		i;
-
-	i = 0;
-	while (ft_strcmp_c(char_allowed, line[i]) == true)
-		i++;
-	if (line[i] != '\0')
-		error_line(id, line);
-	return (true);
-}
-
 static bool		get_place_line(char *line, int i)
 {
-	if ((line[i] == 'R'
-		&& check_if_well_formated(0, " R0123456789", line) == true))
+	if (is_resolution_line(line, i) == true)
 	{
 		get_resolution(line + i + 1, g_engine->config);
 		return (true);
@@ -83,7 +65,7 @@ static bool		get_place_line(char *line, int i)
 		dispatch(line, i);
 		return (true);
 	}
-	else if (line[i] == '1')
+	else if (is_map_line(line, i) == true)
 	{
 		get_map(line, g_engine->config);
 		return (true);
