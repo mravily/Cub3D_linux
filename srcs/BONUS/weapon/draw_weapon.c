@@ -6,13 +6,13 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/08 17:28:43 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/27 15:18:07 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/17 18:31:27 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void		draw_weapon_texture(t_engine *engine, int nb, t_vector coord
+void		draw_weapon_texture(int nb, t_vector coord
 	, t_vector size)
 {
 	size_t				i;
@@ -21,7 +21,7 @@ void		draw_weapon_texture(t_engine *engine, int nb, t_vector coord
 	int					fy;
 	t_weapon_tex		weapon;
 
-	weapon = engine->bonus->weapon->weapon[nb];
+	weapon = g_engine->bonus->weapon->weapon[nb];
 	i = 0;
 	while (i < size.x)
 	{
@@ -30,9 +30,9 @@ void		draw_weapon_texture(t_engine *engine, int nb, t_vector coord
 		{
 			fx = i / (float)(size.x) * weapon.width;
 			fy = j / (float)(size.y) * weapon.height;
-			my_mlx_pixel_put_hlmt(engine->bonus->helmet->img_hlmt
+			my_mlx_pixel_put_hlmt(g_engine->bonus->helmet->img_hlmt
 				, i + (int)(coord.x), j + (int)(coord.y)
-				, hlmt_get_color(&engine->bonus->weapon->weapon[nb], fx, fy));
+				, hlmt_get_color(&g_engine->bonus->weapon->weapon[nb], fx, fy));
 			j++;
 		}
 		i++;

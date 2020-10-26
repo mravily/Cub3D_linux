@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 16:57:43 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/09 16:35:11 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/26 13:01:31 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** verification des arguments entrer lors de l'execution
 */
 
-void			pre_check_file(t_engine *engine, int argc, char **argv)
+void			pre_check_file(int argc, char **argv)
 {
 	if (argc == 1)
 		error_exit_cub("./Cub3D map.cub", "No maps provided"
@@ -36,7 +36,7 @@ void			pre_check_file(t_engine *engine, int argc, char **argv)
 			error_exit_cub(argv[2], "third argument invalid"
 				, "Only \"-save\" is allowed in third argument");
 		else
-			engine->config->save = true;
+			g_engine->config->save = true;
 	}
 	else if (argc > 3)
 		error_exit_cub("", "Too many arguments", "Two argument max");
@@ -47,55 +47,66 @@ void			pre_check_file(t_engine *engine, int argc, char **argv)
 ** si la position du joueur est indiquer
 */
 
-static void		check_init_var_2(t_engine *engine)
+static void		check_init_var_2(void)
 {
-	if (engine->config->texture[SOUTH].path == NULL)
+	if (g_engine->config->texture[SOUTH].path == NULL)
 		error_exit_cub("Texture[SOUTH]", "Provided path texture"
 			, "Check .cub file");
-	if (engine->config->texture[WEST].path == NULL)
+	if (g_engine->config->texture[WEST].path == NULL)
 		error_exit_cub("Texture[WEST]", "Provided path texture"
 			, "Check .cub file");
-	if (engine->config->texture[EAST].path == NULL)
+	if (g_engine->config->texture[EAST].path == NULL)
 		error_exit_cub("Texture[EAST]", "Provided path texture"
 			, "Check .cub file");
-	if (engine->config->texture[SPRITE].path == NULL)
+	if (g_engine->config->texture[SPRITE].path == NULL)
 		error_exit_cub("Texture[SPRITE]", "Provided path texture"
 			, "Check .cub file");
-	if (engine->config->ceiling_w == null)
+	if (g_engine->config->ceiling_w == null)
 		error_exit_cub("Texture[NORTH]"
 			, "Provided path rgb color or path ceiling"
 			, "Check .cub file");
-	if (engine->config->floor_w == null)
+	if (g_engine->config->floor_w == null)
 		error_exit_cub("Texture[NORTH]"
 			, "Provided path rgb color or path ceiling"
 			, "Check .cub file");
 }
 
-static void		check_init_var(t_engine *engine)
+static void		check_init_var(void)
 {
-	if (engine->config->resolution.x == 0)
+	if (g_engine->parsing->resolution == 0)
+		error_exit_cub("Resolution", "Resolution not indicated"
+			, "Check .cub file");
+	if (g_engine->config->resolution.y == 0)
 		error_exit_cub("Resolution", "Resolution not well formatted"
 			, "Check .cub file");
-	if (engine->config->resolution.y == 0)
-		error_exit_cub("Resolution", "Resolution not well formatted"
-			, "Check .cub file");
-	if (engine->player->pos.x == 0)
+	if (g_engine->player->pos.x == 0)
 		error_exit_cub("player->pos", "Player position not indicated in map"
 			, "Check .cub file");
-	if (engine->player->pos.y == 0)
+	if (g_engine->player->pos.y == 0)
 		error_exit_cub("player->pos", "Player position not indicated in map"
 			, "Check .cub file");
-	if (engine->config->texture[NORTH].path == NULL)
+	if (g_engine->config->texture[NORTH].path == NULL)
 		error_exit_cub("Texture[NORTH]", "Provided path texture"
 			, "Check .cub file");
-	check_init_var_2(engine);
+	check_init_var_2();
+}
+
+/*
+** Verification de la ligne si elle contient uniquement les chars
+** autoriser, puis ajout de la line tableau 2D
+*/
+
+void			get_map(char *line, t_config *config)
+{
+	check_line_map(line, config);
+	ft_add_to_tab((void *)line, (void ***)&config->map);
 }
 
 /*
 ** parsing des information du fichier .cub
 */
 
-void			parsing_cub(char *argv, t_engine *engine)
+void			parsing_cub(char *argv)
 {
 	int		fd;
 	int		ret;
@@ -109,10 +120,10 @@ void			parsing_cub(char *argv, t_engine *engine)
 	{
 		ret = get_next_line(fd, &line);
 		if (ft_strlen(line) != 0)
-			check_line(line, engine);
+			check_line(line);
 		free(line);
 	}
 	close(fd);
-	check_map(engine->config, engine->player);
-	check_init_var(engine);
+	check_map(g_engine->config, g_engine->player);
+	check_init_var();
 }

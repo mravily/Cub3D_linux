@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/26 12:05:47 by mravily           #+#    #+#             */
-/*   Updated: 2020/09/28 13:16:53 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/26 12:47:00 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char				*ft_strnstr(char *str, char *find, size_t len);
 int					ft_strcmp(char *s1, char *s2);
 int					ft_strncmp(char *s1, char *s2, size_t n);
 bool				ft_strcmp_c(char *p_src, char p_target);
-int					ft_atoi(char *str);
+double				ft_atoi(char *str);
 bool				ft_isalpha(int c);
 bool				ft_isdigit(int c);
 bool				ft_isalnum(int c);

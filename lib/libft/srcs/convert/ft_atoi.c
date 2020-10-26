@@ -6,17 +6,17 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/26 12:42:04 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/26 12:42:07 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/26 12:46:40 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *str)
+double	ft_atoi(char *str)
 {
-	int i;
-	int nb;
-	int neg;
+	int			i;
+	double		nb;
+	double		neg;
 
 	neg = 0;
 	nb = 0;

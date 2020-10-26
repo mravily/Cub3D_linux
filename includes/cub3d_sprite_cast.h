@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 18:37:45 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/27 14:04:11 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/21 14:54:57 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,14 @@
 # include "cub3d_vector.h"
 # include "cub3d_config.h"
 
-# define BASIC_SP 4
 # define BACK_PACK 7
 # define LITTLE_MEDKIT 8
 # define MEDKIT 9
 # define GREEN_SHIELD 10
 # define BLUE_SHIELD 11
 # define RED_SHIELD 12
-# define MINI_GUN 13
-# define FUCK 14
-# define COCADEMON 15
+# define COCADEMON 13
+# define MINI_GUN 14
 
 typedef struct	s_sprite
 {

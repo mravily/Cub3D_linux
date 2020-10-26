@@ -1,0 +1,10 @@
+R 1080 720
+NO ./textures/xpm/BASIC/MARBFAC2.xpm
+SO ./textures/xpm/BASIC/MARBFAC3.xpm
+EA ./textures/xpm/BASIC/MARBLE3.xpm
+WE ./textures/xpm/BASIC/MARBFACE.xpm
+S ./textures/xpm/SPRITE_HAUT.xpm
+C ./textures/xpm/BASIC/CEIL1_2.xpm
+F ./textures/xpm/BASIC/FLOOR7_2.xpm
+
+1

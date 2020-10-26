@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/12 17:20:09 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/05 10:41:55 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/22 16:01:50 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,22 @@ static void		set_west_player(t_player *player)
 
 void			set_player(char **map, t_vector index, t_player *player)
 {
-	check_around(map, index);
-	player->pos = create_vector(index.x + 0.5, index.y + 0.5);
-	player->start_pos = player->pos;
-	if (map[(int)index.y][(int)index.x] == 'N')
-		set_north_player(player);
-	else if (map[(int)index.y][(int)index.x] == 'S')
-		set_south_player(player);
-	else if (map[(int)index.y][(int)index.x] == 'E')
-		set_east_player(player);
-	else if (map[(int)index.y][(int)index.x] == 'W')
-		set_west_player(player);
+	if (g_engine->parsing->player == false)
+	{
+		check_around(map, index);
+		player->pos = create_vector(index.x + 0.5, index.y + 0.5);
+		player->start_pos = player->pos;
+		if (map[(int)index.y][(int)index.x] == 'N')
+			set_north_player(player);
+		else if (map[(int)index.y][(int)index.x] == 'S')
+			set_south_player(player);
+		else if (map[(int)index.y][(int)index.x] == 'E')
+			set_east_player(player);
+		else if (map[(int)index.y][(int)index.x] == 'W')
+			set_west_player(player);
+		g_engine->parsing->player = true;
+	}
+	else
+		error_exit_cub(map[(int)index.y], "Two player start positions"
+			, "Remove a player position on the map");
 }

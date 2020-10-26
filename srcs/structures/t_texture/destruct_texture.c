@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 21:54:27 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/10 16:40:07 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/21 14:37:41 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 void	destroy_texture(t_texture to_destroy)
 {
 	to_destroy.path = NULL;
-	to_destroy.img = 0;
+	mlx_destroy_image(g_engine->vars->mlx_ptr, to_destroy.img);
 	to_destroy.color = NULL;
 }
 
@@ -30,4 +30,5 @@ void	destroy_texture(t_texture to_destroy)
 void	free_texture(t_texture *to_free)
 {
 	destroy_texture(*to_free);
+	free(to_free);
 }

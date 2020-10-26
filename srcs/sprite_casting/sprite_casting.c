@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 17:14:51 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/10 14:55:44 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/17 18:20:50 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,48 +81,48 @@ static void			short_sprites(t_config *config)
 ** Traduire la position du sprite par rapport a la camera
 */
 
-static void			translate_sprite(t_engine *engine, int i)
+static void			translate_sprite(int i)
 {
-	engine->sprite_cast->sprite_x = engine->config->sprite[i].x
-		- engine->player->pos.x;
-	engine->sprite_cast->sprite_y = engine->config->sprite[i].y
-		- engine->player->pos.y;
-	engine->sprite_cast->inv_det = 1.0 / (engine->player->plane.x
-		* engine->player->dir.y
-		- engine->player->dir.x
-		* engine->player->plane.y);
-	engine->sprite_cast->transform_x = engine->sprite_cast->inv_det
-		* (engine->player->dir.y
-		* engine->sprite_cast->sprite_x
-		- engine->player->dir.x
-		* engine->sprite_cast->sprite_y);
-	engine->sprite_cast->transform_y = engine->sprite_cast->inv_det
-		* (-engine->player->plane.y
-		* engine->sprite_cast->sprite_x
-		+ engine->player->plane.x
-		* engine->sprite_cast->sprite_y);
-	engine->sprite_cast->sprite_screen_x = (int)(
-		(engine->config->resolution.x / 2)
-		* (1 + engine->sprite_cast->transform_x
-		/ engine->sprite_cast->transform_y));
+	g_engine->sprite_cast->sprite_x = g_engine->config->sprite[i].x
+		- g_engine->player->pos.x;
+	g_engine->sprite_cast->sprite_y = g_engine->config->sprite[i].y
+		- g_engine->player->pos.y;
+	g_engine->sprite_cast->inv_det = 1.0 / (g_engine->player->plane.x
+		* g_engine->player->dir.y
+		- g_engine->player->dir.x
+		* g_engine->player->plane.y);
+	g_engine->sprite_cast->transform_x = g_engine->sprite_cast->inv_det
+		* (g_engine->player->dir.y
+		* g_engine->sprite_cast->sprite_x
+		- g_engine->player->dir.x
+		* g_engine->sprite_cast->sprite_y);
+	g_engine->sprite_cast->transform_y = g_engine->sprite_cast->inv_det
+		* (-g_engine->player->plane.y
+		* g_engine->sprite_cast->sprite_x
+		+ g_engine->player->plane.x
+		* g_engine->sprite_cast->sprite_y);
+	g_engine->sprite_cast->sprite_screen_x = (int)(
+		(g_engine->config->resolution.x / 2)
+		* (1 + g_engine->sprite_cast->transform_x
+		/ g_engine->sprite_cast->transform_y));
 }
 
 /*
 ** Algo pour le sprite casting
 */
 
-void				sprite_casting(t_engine *engine)
+void				sprite_casting(void)
 {
 	int		i;
 
-	set_sprite_dist(engine->config, engine->player);
-	short_sprites(engine->config);
+	set_sprite_dist(g_engine->config, g_engine->player);
+	short_sprites(g_engine->config);
 	i = 0;
-	while (i < engine->config->num_sprites)
+	while (i < g_engine->config->num_sprites)
 	{
-		translate_sprite(engine, i);
-		calculate_sprite(engine->sprite_cast, engine->config, i);
-		draw_sprite(engine, i);
+		translate_sprite(i);
+		calculate_sprite(g_engine->sprite_cast, g_engine->config, i);
+		draw_sprite(i);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 17:27:00 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/27 11:09:01 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/26 11:28:23 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ t_player				create_player(float x, float y
 	result.inventory = inventory;
 	result.health = 100;
 	result.shield = 0;
-	result.rot_speed = 0.06f;
-	result.mov_speed = 0.1f;
+	result.rot_speed = 0.045f;
+	result.mov_speed = 0.055f;
 	result.start_mov_speed = result.mov_speed;
 	result.pos = create_vector(x, y);
 	result.start_pos = create_vector(x, y);

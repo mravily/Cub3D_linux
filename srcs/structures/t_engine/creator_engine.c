@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 22:35:39 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/10 15:48:40 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/20 11:31:22 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_engine		create_engine(char *title)
 
 	engine.vars = malloc_vars();
 	engine.image = malloc_image();
+	engine.parsing = malloc_parsing();
 	engine.ray_cast = malloc_ray_cast();
 	engine.sprite_cast = malloc_sprite_cast();
 	engine.config = malloc_config(title);

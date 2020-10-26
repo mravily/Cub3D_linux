@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 12:49:16 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/10 12:34:53 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/17 18:32:11 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,14 @@ char				**init_tab_path_weapon_tex(void)
 ** - Les bitmap de l'image stocker en int*
 */
 
-t_weapon_tex		create_weapon_tex(t_engine *engine, char *path)
+t_weapon_tex		create_weapon_tex(char *path)
 {
 	t_weapon_tex	weapon_tex;
 
 	weapon_tex.path = path;
 	weapon_tex.img = NULL;
 	weapon_tex.addr = NULL;
-	if (!(weapon_tex.img = mlx_xpm_file_to_image(engine->vars->mlx_ptr
+	if (!(weapon_tex.img = mlx_xpm_file_to_image(g_engine->vars->mlx_ptr
 		, path, &(weapon_tex.width), &(weapon_tex.height))))
 	{
 		error_exit_cub(path
@@ -75,13 +75,13 @@ t_weapon_tex		create_weapon_tex(t_engine *engine, char *path)
 ** Mallocage de la structure t_weapon_tex pour le start_screen
 */
 
-t_weapon_tex		*malloc_weapon_tex(t_engine *engine, char *path)
+t_weapon_tex		*malloc_weapon_tex(char *path)
 {
 	t_weapon_tex	*weapon_tex;
 
 	weapon_tex = (t_weapon_tex *)malloc(sizeof(t_weapon_tex));
 	if (weapon_tex == NULL)
 		return (NULL);
-	*weapon_tex = create_weapon_tex(engine, path);
+	*weapon_tex = create_weapon_tex(path);
 	return (weapon_tex);
 }

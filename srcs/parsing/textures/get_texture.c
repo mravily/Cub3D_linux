@@ -6,36 +6,17 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/18 17:58:53 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/12 12:19:03 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/17 18:07:37 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 /*
-** Initialisation a zero ou NULL du tableau de t_texture
-*/
-
-t_texture		init_texture(void)
-{
-	t_texture	result;
-
-	result.path = NULL;
-	result.img = NULL;
-	result.width = 0;
-	result.height = 0;
-	result.color = NULL;
-	result.bits_per_pixel = 0;
-	result.line_length = 0;
-	result.endian = 0;
-	return (result);
-}
-
-/*
 ** recuperation des textures et verification de formatage du path
 */
 
-void			get_texture(int id, char *line, t_engine *engine)
+void			get_texture(int id, char *line)
 {
 	char	**tab;
 	int		len_tab;
@@ -52,6 +33,6 @@ void			get_texture(int id, char *line, t_engine *engine)
 	if (check_texture_path(tab[0]) == false)
 		error_exit_cub(line, "Texture path extension isn't a xpm"
 			, "Find this line in the .cub file");
-	texture_assignment(id, tab[0], engine);
+	texture_assignment(id, tab[0]);
 	ft_tab_free(tab);
 }

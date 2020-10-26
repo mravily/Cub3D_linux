@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/17 14:02:51 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/10 14:47:54 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/17 18:36:20 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ t_image		create_image(void)
 ** Initiialisation du pointeur de l'image et de l'adresse des pixels sur l'image
 */
 
-void		init_image(t_engine *engine, t_image *image, int width, int height)
+void		init_image(t_image *image, int width, int height)
 {
 	image->img = NULL;
-	image->img = mlx_new_image(engine->vars->mlx_ptr, width, height);
+	image->img = mlx_new_image(g_engine->vars->mlx_ptr, width, height);
 	if (image->img == NULL)
-		error_exit_cub("engine->image->img == NULL"
+		error_exit_cub("g_engine->image->img == NULL"
 			, "Problem when creating the image"
 			, "Check your structure");
 	image->addr = mlx_get_data_addr(image->img
@@ -52,6 +52,6 @@ void		init_image(t_engine *engine, t_image *image, int width, int height)
 			, &(image->line_length)
 			, &(image->endian));
 	if (image->addr == NULL)
-		error_exit_cub("engine->image->addr == NULL"
+		error_exit_cub("g_engine->image->addr == NULL"
 		, "Problem when creating data address", "Check your structure");
 }

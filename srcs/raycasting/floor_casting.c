@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 19:33:44 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/26 19:43:38 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/17 18:26:50 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,26 +81,26 @@ static void				init_floor_tex(t_floor_cast *floor_cast
 ** Draw les textures a l'écran du sol et plafond
 */
 
-static void				draw_tex_floor_ceiling(t_engine *engine
-	, t_floor_cast *floor_cast, int x, int y)
+static void				draw_tex_floor_ceiling(t_floor_cast *floor_cast
+	, int x, int y)
 {
 	t_config		*config;
 	int				height;
 
-	height = engine->config->resolution.y;
-	config = engine->config;
-	if (engine->config->floor_w == path)
+	height = g_engine->config->resolution.y;
+	config = g_engine->config;
+	if (g_engine->config->floor_w == path)
 	{
 		if (floor_cast->floor_tex_x >= 0 && floor_cast->floor_tex_y >= 0)
-			my_mlx_pixel_put_int(engine, x, y
+			my_mlx_pixel_put_int(x, y
 				, config->floor_color_tex[config->texture[FLOOR].width
 					* floor_cast->floor_tex_y
 					+ floor_cast->floor_tex_x]);
 	}
-	if (engine->config->ceiling_w == path)
+	if (g_engine->config->ceiling_w == path)
 	{
 		if (floor_cast->floor_tex_x >= 0 && floor_cast->floor_tex_y >= 0)
-			my_mlx_pixel_put_int(engine, x, height - y - 1
+			my_mlx_pixel_put_int(x, height - y - 1
 				, (int)config->ceiling_color_tex[config->texture[CEILING].height
 					* floor_cast->floor_tex_y
 					+ floor_cast->floor_tex_x]);
@@ -111,18 +111,18 @@ static void				draw_tex_floor_ceiling(t_engine *engine
 ** Algorithme pour afficher un texture sur le sol et le plafond
 */
 
-void					floor_casting(t_engine *engine, int height, int x)
+void					floor_casting(int height, int x)
 {
 	t_floor_cast		*floor_cast;
 	t_player			*player;
 	int					draw_end;
 	int					y;
 
-	player = engine->player;
-	draw_end = engine->ray_cast->draw_end;
-	*(engine->bonus->floor_cast) = create_floor_cast(engine->ray_cast);
-	floor_cast = engine->bonus->floor_cast;
-	init_floor_wall(floor_cast, engine->ray_cast);
+	player = g_engine->player;
+	draw_end = g_engine->ray_cast->draw_end;
+	*(g_engine->bonus->floor_cast) = create_floor_cast(g_engine->ray_cast);
+	floor_cast = g_engine->bonus->floor_cast;
+	init_floor_wall(floor_cast, g_engine->ray_cast);
 	y = draw_end;
 	while (y < height)
 	{
@@ -131,8 +131,8 @@ void					floor_casting(t_engine *engine, int height, int x)
 			- floor_cast->dist_player)
 			/ (floor_cast->dist_wall - floor_cast->dist_player);
 		init_current_floor(floor_cast, player);
-		init_floor_tex(floor_cast, engine->config);
-		draw_tex_floor_ceiling(engine, floor_cast, x, y);
+		init_floor_tex(floor_cast, g_engine->config);
+		draw_tex_floor_ceiling(floor_cast, x, y);
 		y++;
 	}
 }

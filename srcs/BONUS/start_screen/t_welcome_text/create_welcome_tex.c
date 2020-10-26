@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/11 01:37:37 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/27 16:02:59 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/17 18:33:57 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 ** - Les bitmap de l'image stocker en int*
 */
 
-t_welcome_tex		create_welcome_tex(t_engine *engine, char *path)
+t_welcome_tex		create_welcome_tex(char *path)
 {
 	t_welcome_tex	welcome;
 
 	welcome.path = ft_strdup(path);
 	welcome.img = NULL;
 	welcome.addr = NULL;
-	if (!(welcome.img = mlx_xpm_file_to_image(engine->vars->mlx_ptr
+	if (!(welcome.img = mlx_xpm_file_to_image(g_engine->vars->mlx_ptr
 		, path, &(welcome.width), &(welcome.height))))
 	{
 		error_exit_cub(path
@@ -43,13 +43,13 @@ t_welcome_tex		create_welcome_tex(t_engine *engine, char *path)
 ** Mallocage de la structure t_welcome_tex pour le start_screen
 */
 
-t_welcome_tex		*malloc_welcome_tex(t_engine *engine, char *path)
+t_welcome_tex		*malloc_welcome_tex(char *path)
 {
 	t_welcome_tex	*welcome;
 
 	welcome = (t_welcome_tex *)malloc(sizeof(t_welcome_tex));
 	if (welcome == NULL)
 		return (NULL);
-	*welcome = create_welcome_tex(engine, path);
+	*welcome = create_welcome_tex(path);
 	return (welcome);
 }

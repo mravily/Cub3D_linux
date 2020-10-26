@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 13:27:33 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/10 15:40:54 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/21 18:37:27 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		destroy_weapon(t_weapon to_destroy)
 	int		i;
 
 	i = 0;
-	while (i < 18)
+	while (i < WEAPON_PART)
 	{
 		destroy_weapon_tex(to_destroy.weapon[i]);
 		i++;

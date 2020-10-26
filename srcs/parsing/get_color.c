@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 19:06:42 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/09 15:41:01 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/17 18:07:37 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,19 +85,19 @@ static void		get_rgb(int id, char *line_color, t_config *config)
 ** Set du path du floor ou ceiling
 */
 
-static void		get_path_color(int id, char *path_color, t_engine *engine)
+static void		get_path_color(int id, char *path_color)
 {
-	if (id == 6 && engine->config->floor_w == null)
+	if (id == 6 && g_engine->config->floor_w == null)
 	{
-		engine->config->floor_w = path;
+		g_engine->config->floor_w = path;
 		if (check_texture_path(path_color) == true)
-			texture_assignment(id, path_color, engine);
+			texture_assignment(id, path_color);
 	}
-	else if (id == 7 && engine->config->ceiling_w == null)
+	else if (id == 7 && g_engine->config->ceiling_w == null)
 	{
-		engine->config->ceiling_w = path;
+		g_engine->config->ceiling_w = path;
 		if (check_texture_path(path_color) == true)
-			texture_assignment(id, path_color, engine);
+			texture_assignment(id, path_color);
 	}
 	else
 		error_exit_cub(path_color, "Path (floor or ceiling) already attribute"
@@ -108,13 +108,13 @@ static void		get_path_color(int id, char *path_color, t_engine *engine)
 ** Recuperation de la couleur en RGB ou path XPM
 */
 
-void			get_color(int id, char *line, t_engine *engine)
+void			get_color(int id, char *line)
 {
 	char		**tab;
 	int			len_tab;
 	t_config	*config;
 
-	config = engine->config;
+	config = g_engine->config;
 	len_tab = 0;
 	tab = NULL;
 	tab = ft_strsplit(line, ' ');
@@ -124,6 +124,6 @@ void			get_color(int id, char *line, t_engine *engine)
 	if (tab[0][0] >= '0' && tab[0][0] <= '9')
 		get_rgb(id, tab[0], config);
 	else if (tab[0][0] == '.' && tab[0][1] == '/')
-		get_path_color(id, tab[0], engine);
+		get_path_color(id, tab[0]);
 	ft_tab_free(tab);
 }

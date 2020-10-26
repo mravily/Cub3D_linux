@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/12 18:40:53 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/27 10:58:18 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/21 14:56:40 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void			check_and_set_sprite(t_config *config, char **map
 {
 	check_around(map, index);
 	if (map[(int)index.y][(int)index.x] == '2')
-		set_sprite(config, index, BASIC_SP);
+		set_sprite(config, index, SPRITE);
 	if (map[(int)index.y][(int)index.x] == '3')
 		set_sprite(config, index, BACK_PACK);
 	if (map[(int)index.y][(int)index.x] == '4')

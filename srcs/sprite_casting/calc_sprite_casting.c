@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/12 21:10:45 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/10 14:55:14 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/21 14:55:31 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 static void			calculate_sprite_height(t_sprite_cast *sprite_cast
 	, t_config *config, int i)
 {
-	if (config->sprite[i].id_texture == BASIC_SP)
+	if (config->sprite[i].id_texture == SPRITE)
 	{
 		sprite_cast->v_move_screen = (sprite_cast->transform_y);
 		sprite_cast->sprite_height = (int)fabs(
@@ -57,7 +57,7 @@ static void			calculate_draw_start_y(t_sprite_cast *sprite_cast
 static void			calculate_sprite_width(t_sprite_cast *sprite_cast
 	, t_config *config, int i)
 {
-	if (config->sprite[i].id_texture == BASIC_SP)
+	if (config->sprite[i].id_texture == SPRITE)
 		sprite_cast->sprite_width = (int)fabs(
 			(config->resolution.y / sprite_cast->transform_y) / 2);
 	else

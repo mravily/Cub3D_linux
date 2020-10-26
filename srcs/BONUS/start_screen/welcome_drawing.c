@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/11 01:51:15 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/27 15:59:58 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/17 18:33:06 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void		my_mlx_pixel_put_welcome_tex(t_img_welc *img_welc, int x
 		*(t_color *)dst = color;
 }
 
-void		draw_welcome_texture(t_engine *engine, t_welcome_tex *welcome
+void		draw_welcome_texture(t_welcome_tex *welcome
 	, t_vector coord, t_vector size)
 {
 	size_t		i;
@@ -51,7 +51,7 @@ void		draw_welcome_texture(t_engine *engine, t_welcome_tex *welcome
 		{
 			fx = i / (float)(size.x) * welcome->width;
 			fy = j / (float)(size.y) * welcome->height;
-			my_mlx_pixel_put_welcome_tex(engine->bonus->img_welc
+			my_mlx_pixel_put_welcome_tex(g_engine->bonus->img_welc
 				, i + (int)(coord.x), j + (int)(coord.y)
 				, welcome_get_color(welcome, fx, fy));
 			j++;

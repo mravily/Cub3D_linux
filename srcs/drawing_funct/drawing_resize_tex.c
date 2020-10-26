@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/11 00:35:52 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/27 13:55:39 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/17 18:16:18 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_color		texture_get_color(t_texture *texture, int x, int y)
 	return (result);
 }
 
-void		draw_resize_tex_in_screen(t_engine *engine, t_texture *texture
+void		draw_resize_tex_in_screen(t_texture *texture
 	, t_vector coord, t_vector size)
 {
 	size_t		i;
@@ -38,7 +38,7 @@ void		draw_resize_tex_in_screen(t_engine *engine, t_texture *texture
 		{
 			fx = i / (float)(size.x) * texture->width;
 			fy = j / (float)(size.y) * texture->height;
-			my_mlx_pixel_put(engine, i + (int)(coord.x)
+			my_mlx_pixel_put(i + (int)(coord.x)
 				, j + (int)(coord.y), texture_get_color(texture, fx, fy));
 			j++;
 		}

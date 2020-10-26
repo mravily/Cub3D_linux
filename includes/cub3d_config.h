@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 18:03:48 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/10 16:18:31 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/21 15:00:54 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <stdlib.h>
 # include <stdbool.h>
 
-# define NB_TEX 16
-# define NB_SP 15
+# define NB_TEX 15
+# define NB_SP 30
 
 typedef enum	e_way
 {
@@ -36,7 +36,7 @@ typedef struct	s_config
 	char		*title;
 	t_vector	resolution;
 	t_texture	texture[NB_TEX];
-	t_sprite	sprite[15];
+	t_sprite	sprite[NB_SP];
 
 	bool		sprite_bonus;
 	bool		save;

@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 13:19:58 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/12 12:17:52 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/17 18:31:47 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Initialisation des elements de la structure t_weapon
 */
 
-t_weapon		create_weapon(t_engine *engine)
+t_weapon		create_weapon(void)
 {
 	t_weapon		result;
 	int				i;
@@ -26,7 +26,7 @@ t_weapon		create_weapon(t_engine *engine)
 	i = 0;
 	while (i < WEAPON_PART)
 	{
-		result.weapon[i] = create_weapon_tex(engine, path_weapon[i]);
+		result.weapon[i] = create_weapon_tex(path_weapon[i]);
 		i++;
 	}
 	ft_tab_free(path_weapon);
@@ -34,7 +34,7 @@ t_weapon		create_weapon(t_engine *engine)
 	return (result);
 }
 
-t_weapon		*malloc_weapon(t_engine *engine)
+t_weapon		*malloc_weapon(void)
 {
 	t_weapon	*weapon;
 
@@ -42,6 +42,6 @@ t_weapon		*malloc_weapon(t_engine *engine)
 	if (weapon == NULL)
 		error_exit_cub("Struct weapon", "Echec lors du mallocage"
 			, "check you structure");
-	*weapon = create_weapon(engine);
+	*weapon = create_weapon();
 	return (weapon);
 }

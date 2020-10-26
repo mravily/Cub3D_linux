@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 14:57:10 by nlafarge          #+#    #+#             */
-/*   Updated: 2020/10/17 14:55:39 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/17 15:13:09 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@
 # define BUFFER_SIZE 1000
 
 int		get_next_line(int fd, char **line);
-size_t	ft_strlen(char *str);
-char	*ft_strdup(char *s1);
-char	*ft_strjoin(char *s1, char *s2);
 int		cpy_last_line(int ret, char **line, char *rest);
-char	*get_place(char *rest, char *tmp);
+char	*get_place_gnl(char *rest, char *tmp);
 
 #endif

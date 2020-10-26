@@ -6,7 +6,7 @@
 #    By: mravily <mravily@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/04 13:40:02 by mravily           #+#    #+#              #
-#    Updated: 2020/10/17 14:58:51 by mravily          ###   ########.fr        #
+#    Updated: 2020/10/26 11:24:02 by mravily          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@
 # $* nom du fichier sans son extension
 
 #gcc -o <ficher de sortie> -c <fichier source> [FLAGS]
-NAME = Cub3D
+NAME = cub3D
 
 CC =   clang
 LIB_DIR = lib/libft lib/mlx_linux
@@ -39,7 +39,7 @@ LIB = ft mlx_Linux mlx
 vpath %.c $(foreach dir, $(SRC_DIR), $(dir):)
 
 LINUXFLAG	= -lm -lX11 -lXext -lbsd
-CFLAGS = -Werror -Wall -Wextra -fsanitize=address -g
+CFLAGS = -Werror -Wall -Wextra -g #-fsanitize=address
 IFLAGS = $(foreach dir, $(INC_DIR), -I$(dir) )
 LFLAGS = $(foreach dir, $(LIB_DIR), -L$(dir) ) $(foreach lib, $(LIB), -l $(lib))
 

@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 14:19:49 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/12 12:19:54 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/20 12:50:05 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "cub3d_image.h"
 # include "cub3d_player.h"
 # include "cub3d_config.h"
+# include "cub3d_parsing.h"
 # include "cub3d_event.h"
 # include "cub3d_ray_cast.h"
 # include "cub3d_sprite_cast.h"
@@ -26,6 +27,7 @@ typedef struct	s_engine
 {
 	t_vars			*vars;
 	t_image			*image;
+	t_parsing		*parsing;
 	t_ray_cast		*ray_cast;
 	t_sprite_cast	*sprite_cast;
 	t_player		*player;
@@ -38,16 +40,15 @@ typedef struct	s_engine
 ** Basic function for full raycasting (raycast, floorcast, ceilingcast)
 */
 
-void			pre_check_file(t_engine *engine, int argc, char **argv);
-void			init_engine(t_engine *engine);
-void			raycasting(t_engine *engine);
-void			render_game(t_engine *engine);
-void			init_image(t_engine *engine, t_image *image
-	, int width, int height);
-void			floor_casting(t_engine *engine, int height, int x);
-int				screen_shot(t_engine *engine);
-void			event_pressed_bonus(int key, t_engine *engine);
-void			sprite_casting(t_engine *engine);
+void			pre_check_file(int argc, char **argv);
+void			init_engine(void);
+void			raycasting(void);
+void			render_game(void);
+void			init_image (t_image *image, int width, int height);
+void			floor_casting(int height, int x);
+int				screen_shot(void);
+void			event_pressed_bonus(int key);
+void			sprite_casting(void);
 void			init_tex_x(t_sprite_cast *sprite_cast, t_config *config
 	, int stripe, int i);
 void			init_tex_y(t_sprite_cast *sprite_cast, t_config *config
@@ -59,7 +60,7 @@ void			calculate_sprite(t_sprite_cast *sprite_cast, t_config *config
 ** Function pour catch les erreurs et les affichers de facon specifiques
 */
 void			error_exit_cub(char *line, char *str, char *message);
-int				exit_screen_shot(t_engine *engine);
+int				exit_screen_shot(void);
 
 /*
 ** Mallocage ou creation structure
@@ -67,18 +68,18 @@ int				exit_screen_shot(t_engine *engine);
 
 char			**init_tab_path_helmet_tex(void);
 
-t_weapon_tex	create_weapon_tex(t_engine *engine, char *path);
-t_img_hlmt		create_img_hlmt(t_engine *engine, int width, int height);
-t_helmet_tex	create_hlmt_tex(t_engine *engine, char *path);
-t_texture		create_texture(t_engine *engine, char *path);
+t_weapon_tex	create_weapon_tex(char *path);
+t_img_hlmt		create_img_hlmt(int width, int height);
+t_helmet_tex	create_hlmt_tex(char *path);
+t_texture		create_texture(char *path);
 t_engine		*malloc_engine(char *title);
-t_helmet		*malloc_helmet(t_engine *engine);
-t_weapon		*malloc_weapon(t_engine *engine);
-t_texture		*malloc_texture(t_engine *engine, char *path);
-t_img_hlmt		*malloc_img_hlmt(t_engine *engine, int width, int height);
-t_img_welc		*malloc_img_welc(t_engine *engine, int width, int height);
-t_helmet_tex	*malloc_helmet_tex(t_engine *engine, char *path);
-t_welcome_tex	*malloc_welcome_tex(t_engine *engine, char *path);
+t_helmet		*malloc_helmet(void);
+t_weapon		*malloc_weapon(void);
+t_texture		*malloc_texture(char *path);
+t_img_hlmt		*malloc_img_hlmt(int width, int height);
+t_img_welc		*malloc_img_welc(int width, int height);
+t_helmet_tex	*malloc_helmet_tex(char *path);
+t_welcome_tex	*malloc_welcome_tex(char *path);
 
 /*
 ** Free ou destroy structure
@@ -91,7 +92,7 @@ void			destroy_config(t_config to_destroy);
 
 void			free_config(t_config *to_free);
 void			free_texture(t_texture *to_free);
-void			free_engine(t_engine *to_free);
+void			free_engine(void);
 void			free_helmet(t_helmet *to_free);
 void			free_img_hlmt(t_img_hlmt *to_free);
 void			free_helmet_tex(t_helmet_tex *to_free);
@@ -101,36 +102,36 @@ void			free_welcome_tex(t_vars *vars, t_welcome_tex *to_free);
 ** Drawing Function
 */
 
-void			compteur_shield(t_engine *engine);
-void			compteur_health(t_engine *engine);
-void			draw_sprite(t_engine *engine, int i);
-void			draw_health(t_engine *engine);
-void			draw_blue_shield(t_engine *engine);
-void			draw_green_shield(t_engine *engine);
-void			draw_weapon_texture(t_engine *engine, int nb, t_vector coord
+void			compteur_shield(void);
+void			compteur_health(void);
+void			draw_sprite(int i);
+void			draw_health(void);
+void			draw_blue_shield(void);
+void			draw_green_shield(void);
+void			draw_weapon_texture(int nb, t_vector coord
 	, t_vector size);
-void			draw_hlmt_texture(t_engine *engine, int nb, t_vector coord
+void			draw_hlmt_texture(int nb, t_vector coord
 	, t_vector size);
-void			draw_welcome_texture(t_engine *engine, t_welcome_tex *welcome
+void			draw_welcome_texture(t_welcome_tex *welcome
 	, t_vector coord, t_vector size);
 void			my_mlx_pixel_put_hlmt(t_img_hlmt *img_hlmt, int x, int y
 	, t_color color);
-void			my_mlx_pixel_put_welcome(t_engine *engine, int x, int y
+void			my_mlx_pixel_put_welcome(int x, int y
 	, t_color color);
 
 t_color			hlmt_get_color(t_helmet_tex *helmet, int x, int y);
-void			put_on_the_helmet(t_engine *engine);
-void			start_screen(t_engine *engine);
+void			put_on_the_helmet(void);
+void			start_screen(void);
 
-void			fuck(t_engine *engine);
-void			melee(t_engine *engine);
-void			mini_gun_firing(t_engine *engine, t_vector pos, t_vector size);
-void			mini_gun(t_engine *engine);
-void			weapon(t_engine *engine);
-void			game_over_screen(t_engine *engine);
+void			fuck(void);
+void			melee(void);
+void			mini_gun_firing(t_vector pos, t_vector size);
+void			mini_gun(void);
+void			weapon(void);
+void			game_over_screen(void);
 
-void			render_welcome(t_engine *engine);
-void			render_ath(t_engine *engine);
+void			render_welcome(void);
+void			render_ath(void);
 
 /*
 ** Movement function
@@ -141,7 +142,7 @@ void			simple_move(t_player *player, t_event *event
 	, float mov_speed, char **world_map);
 void			diagonal_movement(t_player *player, t_event *event
 	, float mov_speed, char **world_map);
-void			draw_ath_texture(t_engine *engine, int nb, t_vector coord
+void			draw_ath_texture(int nb, t_vector coord
 	, t_vector size);
 
 #endif

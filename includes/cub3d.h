@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 22:00:44 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/10 15:30:21 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/22 17:21:40 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@
 # include <math.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include <string.h>
 # include <stdbool.h>
 
 # include <sys/mman.h>
@@ -53,11 +52,13 @@
 # include <sys/shm.h>
 # include <X11/extensions/XShm.h>
 
+t_engine *g_engine;
+
 bool		is_not_wall(t_vector index, char **map);
 bool		is_cardi_point(t_vector index, char **map);
 int			exit_cub(void *param);
 void		error_exit_cub(char *line, char *error, char *message);
-void		draw_map(t_engine *engine, int call);
+void		draw_map(int call);
 void		print_parsing_cub(t_config *config, t_player *player);
 
 #endif

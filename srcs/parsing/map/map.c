@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/17 16:08:30 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/09 16:25:53 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/26 12:57:18 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,20 @@ void			check_around(char **map, t_vector index)
 	if (index.x == 0)
 		error_exit_cub(map[(int)index.y], "Invalid map"
 			, "Find this line in the .cub file");
-	if (map[(int)index.y - 1][(int)index.x] == ' ')
-		error_exit_cub(map[(int)index.y], "Invalid map"
+	if (map[(int)index.y - 1][(int)index.x] == ' '
+		|| map[(int)index.y - 1][(int)index.x] == '\0')
+		error_exit_cub(map[(int)index.y - 1], "Invalid map"
 			, "Find this line in the .cub file");
 	if (map[(int)index.y][(int)index.x - 1] == ' ')
-		error_exit_cub(map[(int)index.y], "Invalid map"
-			, "Find this line in the .cub file");
-	if (map[(int)index.y + 1][(int)index.x] == ' '
-	|| map[(int)index.y + 1] == NULL)
 		error_exit_cub(map[(int)index.y], "Invalid map"
 			, "Find this line in the .cub file");
 	if (map[(int)index.y][(int)index.x + 1] == ' '
 		|| map[(int)index.y][(int)index.x + 1] == '\0')
 		error_exit_cub(map[(int)index.y], "Invalid map"
+			, "Find this line in the .cub file");
+	if (map[(int)index.y + 1][(int)index.x] == ' '
+		|| map[(int)index.y + 1][(int)index.x] == '\0')
+		error_exit_cub(map[(int)index.y + 1], "Invalid map"
 			, "Find this line in the .cub file");
 }
 
@@ -62,9 +63,12 @@ void			check_around(char **map, t_vector index)
 
 static float	check_first_line_map(char **map, t_vector index)
 {
-	if (map[(int)index.y][(int)index.x] != '1')
+	while (ft_strcmp_c(" ", map[(int)index.y][(int)index.x]) == true)
 		index.x++;
-	if (map[(int)index.y][(int)index.x] == '1')
+	if (map[(int)index.y][(int)index.x] != '1')
+		error_exit_cub(map[(int)index.y], "Invalid map"
+				, "Find this line in the .cub file");
+	else if (map[(int)index.y][(int)index.x] == '1')
 	{
 		while (ft_strcmp_c("1", map[(int)index.y]
 			[(int)index.x]) == true)

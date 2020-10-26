@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 16:54:30 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/17 14:54:46 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/17 15:10:16 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int				get_next_line_brother(int fd, char **line)
 			if ((*line = ft_strdup(rest)) == NULL
 				|| (tmp = ft_strdup(rest + (i[0] + 1))) == NULL)
 				return (-1);
-			rest = get_place(rest, tmp);
+			rest = get_place_gnl(rest, tmp);
 			return (1);
 		}
 	}

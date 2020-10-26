@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/11 19:34:14 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/27 16:50:03 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/22 13:22:35 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ void		my_mlx_pixel_put_hlmt(t_img_hlmt *img_hlmt, int x
 		*(t_color *)dst = color;
 }
 
-void		draw_hlmt_texture(t_engine *engine, int nb, t_vector coord
-	, t_vector size)
+void		draw_hlmt_texture(int nb, t_vector coord, t_vector size)
 {
 	size_t			i;
 	size_t			j;
@@ -44,7 +43,7 @@ void		draw_hlmt_texture(t_engine *engine, int nb, t_vector coord
 	int				fy;
 	t_helmet_tex	helmet;
 
-	helmet = engine->bonus->helmet->helmet_part[nb];
+	helmet = g_engine->bonus->helmet->helmet_part[nb];
 	i = 0;
 	while (i < size.x)
 	{
@@ -53,9 +52,9 @@ void		draw_hlmt_texture(t_engine *engine, int nb, t_vector coord
 		{
 			fx = i / (float)(size.x) * helmet.width;
 			fy = j / (float)(size.y) * helmet.height;
-			my_mlx_pixel_put_hlmt(engine->bonus->helmet->img_hlmt
+			my_mlx_pixel_put_hlmt(g_engine->bonus->helmet->img_hlmt
 				, i + (int)(coord.x), j + (int)(coord.y)
-				, hlmt_get_color(&engine->bonus->helmet->helmet_part[nb]
+				, hlmt_get_color(&g_engine->bonus->helmet->helmet_part[nb]
 				, fx, fy));
 			j++;
 		}
@@ -63,8 +62,7 @@ void		draw_hlmt_texture(t_engine *engine, int nb, t_vector coord
 	}
 }
 
-void		draw_ath_texture(t_engine *engine, int nb, t_vector coord
-	, t_vector size)
+void		draw_ath_texture(int nb, t_vector coord, t_vector size)
 {
 	size_t			i;
 	size_t			j;
@@ -72,7 +70,7 @@ void		draw_ath_texture(t_engine *engine, int nb, t_vector coord
 	int				fy;
 	t_ath_tex		ath;
 
-	ath = engine->bonus->helmet->ath_part[nb];
+	ath = g_engine->bonus->helmet->ath_part[nb];
 	i = 0;
 	while (i < size.x)
 	{
@@ -81,9 +79,10 @@ void		draw_ath_texture(t_engine *engine, int nb, t_vector coord
 		{
 			fx = i / (float)(size.x) * ath.width;
 			fy = j / (float)(size.y) * ath.height;
-			my_mlx_pixel_put_hlmt(engine->bonus->helmet->img_hlmt
+			my_mlx_pixel_put_hlmt(g_engine->bonus->helmet->img_hlmt
 				, i + (int)(coord.x), j + (int)(coord.y)
-				, hlmt_get_color(&engine->bonus->helmet->ath_part[nb], fx, fy));
+				, hlmt_get_color(&g_engine->bonus->helmet->ath_part[nb]
+				, fx, fy));
 			j++;
 		}
 		i++;

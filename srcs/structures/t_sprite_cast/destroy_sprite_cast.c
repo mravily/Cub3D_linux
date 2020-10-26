@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/11 00:05:54 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/26 15:32:16 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/21 15:06:40 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		destroy_sprite_cast(t_sprite_cast to_destroy)
 	to_destroy.draw_end_y = 0;
 	to_destroy.tex_x = 0;
 	to_destroy.tex_y = 0;
-	to_destroy.z_buffer = NULL;
+	free(to_destroy.z_buffer);
 	to_destroy.v_move_screen = 0;
 	(void)to_destroy;
 }

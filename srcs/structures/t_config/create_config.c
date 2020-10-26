@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/31 17:21:17 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/28 12:38:14 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/20 12:06:04 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_config		create_config(char *title)
 	int			i;
 
 	config.title = ft_strdup(title);
-	config.resolution = create_vector(150, 150);
+	config.resolution = create_vector(1, 1);
 	i = 0;
 	while (i < NB_TEX)
 	{

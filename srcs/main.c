@@ -6,21 +6,22 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 16:57:48 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/12 12:05:40 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/22 16:55:55 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void		do_save(t_engine *engine)
+static void		do_save(void)
 {
-	if (engine->config->save == true)
+	if (g_engine->config->save == true)
 	{
-		render_game(engine);
-		if (screen_shot(engine) == 0)
+		raycasting();
+		start_screen();
+		if (screen_shot() == 0)
 			error_exit_cub("Screen_shot", "During the screen_shot"
 				, "Check Function");
-		exit_screen_shot(engine);
+		exit_screen_shot();
 	}
 }
 
@@ -28,67 +29,64 @@ static void		do_save(t_engine *engine)
 ** Function qui permettent d'afficher de le rendu du jeu a l'ecran
 */
 
-void			render_game(t_engine *engine)
+void			render_game(void)
 {
-	if (engine->player->health != 0)
+	if (g_engine->player->health != 0)
 	{
-		raycasting(engine);
-		if (engine->event->start == false)
-			start_screen(engine);
+		raycasting();
+		if (g_engine->event->start == false)
+			start_screen();
 		else
-			put_on_the_helmet(engine);
+			put_on_the_helmet();
 	}
 	else
 	{
-		clear_screen(engine);
-		game_over_screen(engine);
+		clear_screen();
+		game_over_screen();
 	}
-	render_screen(engine);
+	render_screen();
 }
 
 /*
 ** Initialisation des structures bonus
 */
 
-void			engine_bonus(t_engine *engine)
+void			engine_bonus(void)
 {
-	int		width_welcome;
-	int		height_welcome;
+	int			width_welcome;
+	int			height_welcome;
+	t_bonus		*bonus;
 
-	width_welcome = engine->config->resolution.x;
-	height_welcome = engine->config->resolution.y;
-	engine->bonus->floor_cast = malloc_floor_cast(engine->ray_cast);
-	engine->bonus->img_welc = malloc_img_welc(engine, width_welcome
-		, height_welcome);
-	engine->bonus->welcome = malloc_welcome_tex(engine
-		, "./textures/xpm/WELCOME.xpm");
-	engine->bonus->game_over = malloc_welcome_tex(engine
-		, "./textures/xpm/GAME_OVER.xpm");
-	engine->bonus->helmet = malloc_helmet(engine);
-	engine->bonus->weapon = malloc_weapon(engine);
+	bonus = g_engine->bonus;
+	width_welcome = g_engine->config->resolution.x;
+	height_welcome = g_engine->config->resolution.y;
+	bonus->floor_cast = malloc_floor_cast(g_engine->ray_cast);
+	bonus->img_welc = malloc_img_welc(width_welcome, height_welcome);
+	bonus->welcome = malloc_welcome_tex("./textures/xpm/WELCOME.xpm");
+	bonus->game_over = malloc_welcome_tex("./textures/xpm/GAME_OVER.xpm");
+	bonus->helmet = malloc_helmet();
+	bonus->weapon = malloc_weapon();
 }
 
 int				main(int argc, char **argv)
 {
-	t_engine	*engine;
-
-	engine = malloc_engine("Cub3D (c)");
-	open_appli(engine);
-	pre_check_file(engine, argc, argv);
-	parsing_cub(argv[1], engine);
-	resize_appli(engine);
-	engine_bonus(engine);
-	if (!(engine->sprite_cast->z_buffer = malloc(sizeof(float *)
-		* engine->config->resolution.x + 1)))
+	g_engine = malloc_engine("Cub3D (c)");
+	open_appli();
+	pre_check_file(argc, argv);
+	parsing_cub(argv[1]);
+	resize_appli();
+	engine_bonus();
+	if (!(g_engine->sprite_cast->z_buffer = malloc(sizeof(float *)
+		* g_engine->config->resolution.x + 1)))
 		error_exit_cub("", "malloc z_buffer failed", "");
-	appli_key_hook_pressed(engine, KEYPRESS, &handle_key_pressed
-		, (void *)engine);
-	appli_key_hook_release(engine, KEYRELEASE, &handle_key_release
-		, (void *)engine);
-	application_add_exit_control(engine, DESTROYNOTIFY, &exit_cub
-		, (void *)engine);
-	appli_update(engine, &update_player, (void *)engine);
-	do_save(engine);
-	run_appli(engine);
+	appli_key_hook_pressed(KEYPRESS, &handle_key_pressed
+		, (void *)g_engine);
+	appli_key_hook_release(KEYRELEASE, &handle_key_release
+		, (void *)g_engine);
+	application_add_exit_control(DESTROYNOTIFY, &exit_cub
+		, (void *)g_engine);
+	appli_update(&update_player, (void *)g_engine);
+	do_save();
+	run_appli();
 	return (0);
 }

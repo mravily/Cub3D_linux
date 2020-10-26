@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/31 17:27:36 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/12 11:28:13 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/22 13:28:56 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,14 @@ void		destroy_config(t_config to_destroy)
 {
 	int		i;
 
-	i = 0;
-	while (i < NB_TEX)
-	{
-		destroy_texture(to_destroy.texture[i]);
-		i++;
-	}
 	free(to_destroy.title);
+	i = -1;
+	while (++i < NB_TEX)
+		destroy_texture(to_destroy.texture[i]);
+	i = -1;
+	while (++i < NB_SP)
+		destroy_sprite(to_destroy.sprite[i]);
 	free_vector(&to_destroy.resolution);
-	free_sprite(to_destroy.sprite);
 	free_color(&to_destroy.floor_color);
 	free_color(&to_destroy.ceiling_color);
 	free_map(to_destroy.map);
