@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 19:42:30 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/26 17:09:39 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/26 19:13:57 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ bool			is_floor_line(char *line, int i);
 bool			is_ceiling_line(char *line, int i);
 bool			is_sprite_line(char *line, int i);
 bool			is_resolution_line(char *line, int i);
-
+bool			is_map_line(char *line, int i);
 void			error_color(int id, char **tab, char *line);
 void			error_line(int id, char *line);
 void			error_rgb(int id, char **tab, char *color);

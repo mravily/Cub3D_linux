@@ -1,5 +1,5 @@
 R 100 720
-EA ./textures/xpm/BASIC/MARBLE3.xpmtextures/xpm/BASIC/MARBFAC2.xpmpng
+EA ./textures/xpm/BASIC/MARBLE3.png
 NO ./textures/xpm/BASIC/MARBFAC3.xpm
 SO ./textures/xpm/BASIC/MARBFACE.xpm
 WE ./textures/xpm/BASIC/MARBFACE.xpm
