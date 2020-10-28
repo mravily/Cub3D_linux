@@ -30,7 +30,7 @@ Cub3D is an individual school project at 42 Paris campus. It is Video game proje
 
 ### How to make a screenshot
 `$> make` build if not already build  
-`$> ./cub3D map.cub --save`
+`$> ./cub3D map.cub -save`
 
 ### Implemented bonuses  
 - [x] wall collisions  
