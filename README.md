@@ -12,25 +12,24 @@ Cub3D is an individual school project at 42 Paris campus. It is Video game proje
 ``←`` - rotate left  
 ``→`` - rotate right  
 
+``SHIFT-L`` - Run  
 ``CTRL-L`` - Left Firing  
-``CTRL-R`` - Right Firing
-
-``1`` - weapon slot 1 (when you are on the slot 1 press ``F`` and firing, it's a little surprise ;))
-
+``CTRL-R`` - Right Firing  
+``1`` - weapon slot 1 (when you are on the slot 1 press ``F`` and firing, it's a little surprise ;))  
 ``2`` - weapon slot 2 (Only when you pick up the minigun)
  
 ``ESC`` - exit  
 
 ### How to run  
-`$> make`  for build librairy and program
+`$> make`  for build librairy and program  
 `$> ./cub3D map.cub`
 
 ### How to run bonus part
-`$> make bonus`  for re-build with bonus part
+`$> make bonus`  for build with bonus part  
 `$> ./cub3D map_bonus.cub`
 
 ### How to make a screenshot
-`$> make` build if not already build
+`$> make` build if not already build  
 `$> ./cub3D map.cub --save`
 
 ### Implemented bonuses  
