@@ -6,17 +6,11 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 17:39:35 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/17 18:26:03 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/28 14:52:50 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static void			draw_floor_ceiling(float height, int x)
-{
-	floor_casting(height, x);
-	draw_ceiling_and_floor(x, height);
-}
 
 void				raycasting(void)
 {
@@ -39,8 +33,8 @@ void				raycasting(void)
 		calculate_texture(g_engine->ray_cast, g_engine->player
 			, g_engine->config, height);
 		calculate_color(g_engine->ray_cast, g_engine->player, g_engine->config);
-		draw_floor_ceiling(height, x);
 		draw_texture_wall(g_engine->config, x);
+		draw_ceiling_and_floor(x, height);
 		g_engine->sprite_cast->z_buffer[x] = g_engine->ray_cast->perp_wall_dist;
 		x++;
 	}

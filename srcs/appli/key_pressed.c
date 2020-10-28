@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 17:08:18 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/17 18:24:02 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/28 15:16:35 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,6 @@ int				handle_key_pressed(int key, void *params)
 	engine = (t_engine *)params;
 	if (key == ESC_KEY)
 		exit_cub(g_engine);
-	re_set_dir_player(key, g_engine->player, g_engine->event);
-	if (g_engine->event->start == true)
-	{
-		bool_move(key);
-		event_pressed_bonus(key);
-	}
-	if (g_engine->player->health == 0)
-	{
-		if (key == RTN_KEY)
-		{
-			g_engine->player->dir = g_engine->player->start_dir;
-			g_engine->player->plane = g_engine->player->start_plane;
-			g_engine->player->pos = g_engine->player->start_pos;
-			g_engine->player->health = 100;
-		}
-	}
+	bool_move(key);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 19:42:30 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/26 19:13:57 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/27 13:39:42 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include "cub3d_ray_cast.h"
 # include "cub3d_texture.h"
 
-#define MAX_LEN     512
- 
+# define MAX_LEN 512
+
 typedef struct	s_parsing
 {
 	bool	resolution;
@@ -48,7 +48,7 @@ void			check_tab_line(char *char_allowed, char **tab);
 void			check_around(char **map, t_vector index);
 void			check_and_set_sprite(t_config *config, char **map
 	, t_vector index);
-	
+
 void			dispatch(char *line, int i);
 void			get_resolution(char *line, t_config *config);
 void			get_texture(int id, char *line);
@@ -58,7 +58,7 @@ void			texture_assignment(int id, char *path);
 void			generate_texture(t_texture *texture, t_image *image);
 void			parsing_cub(char *argv);
 void			set_player(char **map, t_vector index, t_player *player);
-int 			how_many_char(char *str, char c);
+int				how_many_char(char *str, char c);
 
 bool			is_wall(char **map, t_vector index);
 bool			is_space(t_vector index, char **map);

@@ -6,23 +6,11 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 17:14:51 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/17 18:20:50 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/27 14:14:07 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static void			check_get_item(t_config *config, t_player *player, int i)
-{
-	if (is_shield_sprite(config, player, i) == true
-		|| is_medkit_sprite(config, player, i) == true
-		|| is_backpack_sprite(config, player, i) == true
-		|| is_weapon_sprite(config, player, i) == true)
-	{
-		config->sprite[i].active = false;
-		get_item(player, config, i);
-	}
-}
 
 /*
 ** Set la distance de chaque sprite par rapport au player
@@ -40,14 +28,6 @@ static void			set_sprite_dist(t_config *config, t_player *player)
 			* (-config->sprite[i].x + player->pos.x)
 			+ (player->pos.y - config->sprite[i].y)
 			* (player->pos.y - config->sprite[i].y);
-		if (config->sprite[i].sprite_dist < 0.16f
-			&& config->sprite[i].active == true)
-		{
-			check_get_item(config, player, i);
-		}
-		else if (config->sprite[i].sprite_dist < 0.36f
-			&& config->sprite[i].id_texture == COCADEMON)
-			hit_by_enemy(player);
 		i++;
 	}
 }

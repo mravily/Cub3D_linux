@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 16:57:43 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/26 14:31:31 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/28 15:24:45 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,6 @@ static void		check_init_var_2(void)
 			, "Check .cub file");
 	if (g_engine->config->texture[SPRITE].path == NULL)
 		error_exit_cub("Texture[SPRITE]", "Provided path texture"
-			, "Check .cub file");
-	if (g_engine->config->ceiling_w == null)
-		error_exit_cub("Texture[CEILING]"
-			, "Provided rgb color or path ceiling"
-			, "Check .cub file");
-	if (g_engine->config->floor_w == null)
-		error_exit_cub("Texture[FLOOR]"
-			, "Provided rgb color or path ceiling"
 			, "Check .cub file");
 }
 

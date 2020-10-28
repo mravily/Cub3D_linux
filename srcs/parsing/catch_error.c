@@ -6,23 +6,11 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/14 15:18:38 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/26 18:01:26 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/28 15:20:01 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void			error_path(int id, char *line)
-{
-	if (id == 6)
-		error_exit_cub(line
-			, "Floor line not well formatted"
-			, "Find this line in the .cub file");
-	if (id == 7)
-		error_exit_cub(line
-			, "Ceiling line not well formatted"
-			, "Find this line in the .cub file");
-}
 
 void			error_rgb(int id, char **tab, char *color)
 {

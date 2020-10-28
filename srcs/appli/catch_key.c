@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 17:33:44 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/17 18:21:26 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/28 15:16:25 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,4 @@ void			appli_update(int (*funct)(void *)
 	, void *param)
 {
 	mlx_loop_hook(g_engine->vars->mlx_ptr, funct, param);
-}
-
-/*
-** Reset la direction du player apres fermeture du screen de demarage
-*/
-
-void			re_set_dir_player(int key, t_player *player, t_event *event)
-{
-	if (key == RTN_KEY && event->start == false)
-	{
-		event->start = true;
-		event->rotate_left = false;
-		player->dir = player->start_dir;
-		player->plane = player->start_plane;
-		player->pos = player->start_pos;
-	}
 }

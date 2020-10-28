@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 18:40:24 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/22 13:21:40 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/28 16:07:42 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int		exit_cub(void *param)
 
 	engine = (t_engine *)param;
 	ft_putstr("Closing the Cub3D application\n");
-	system("leaks cub3D | grep leaked");
 	free_engine();
 	exit(EXIT_SUCCESS);
 }

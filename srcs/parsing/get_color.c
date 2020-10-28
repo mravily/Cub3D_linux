@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/30 19:06:42 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/26 18:03:09 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/28 15:27:10 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,37 +75,6 @@ static void		get_rgb(int id, char *line_color, t_config *config)
 }
 
 /*
-** Set du path du floor ou ceiling
-*/
-
-static void		get_path_color(int id, char *path_color)
-{
-	if (id == 6 && g_engine->config->floor_w == null)
-	{
-		if (check_texture_path(path_color) == true)
-		{
-			g_engine->config->floor_w = path;
-			texture_assignment(id, path_color);
-		}
-		else
-			error_path(id, path_color);
-	}
-	else if (id == 7 && g_engine->config->ceiling_w == null)
-	{
-		if (check_texture_path(path_color) == true)
-		{
-			g_engine->config->ceiling_w = path;
-			texture_assignment(id, path_color);
-		}
-		else
-			error_path(id, path_color);
-	}
-	else
-		error_exit_cub(path_color, "Path (floor or ceiling) already attribute"
-			, "only one of each element allowed in the .cub file");
-}
-
-/*
 ** Recuperation de la couleur en RGB ou path XPM
 */
 
@@ -121,11 +90,9 @@ void			get_color(int id, char *line)
 	error_color(id, tab, line);
 	if (tab[0][0] >= '0' && tab[0][0] <= '9')
 		get_rgb(id, tab[0], config);
-	else if (tab[0][0] == '.' && tab[0][1] == '/')
-		get_path_color(id, tab[0]);
 	else
 		error_exit_cub(line
-			, "Line not well formatted"
-			, "Find this line in the .cub file");
+			, "Line color not well formatted"
+			, "Only RGB Color is allowed");
 	ft_tab_free(tab);
 }

@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/17 16:08:30 by mravily           #+#    #+#             */
-/*   Updated: 2020/10/26 12:57:18 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/27 15:53:59 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void			check_line_map(char *line, t_config *config)
 	size_t		i;
 
 	i = 0;
-	while (ft_strcmp_c(" 0123456789NSWE", line[i]) == true)
+	while (ft_strcmp_c(" 012NSWE", line[i]) == true)
 		i++;
 	if (line[i] != '\0')
 		error_exit_cub(line, "Invalid character in the map"
@@ -66,16 +66,26 @@ static float	check_first_line_map(char **map, t_vector index)
 	while (ft_strcmp_c(" ", map[(int)index.y][(int)index.x]) == true)
 		index.x++;
 	if (map[(int)index.y][(int)index.x] != '1')
+	{
+		puts("test");
 		error_exit_cub(map[(int)index.y], "Invalid map"
 				, "Find this line in the .cub file");
+	}
 	else if (map[(int)index.y][(int)index.x] == '1')
 	{
 		while (ft_strcmp_c("1", map[(int)index.y]
 			[(int)index.x]) == true)
 			index.x++;
+		if (map[(int)index.y][(int)index.x] == ' ')
+			while (ft_strcmp_c(" ", map[(int)index.y]
+				[(int)index.x]) == true)
+				index.x++;
 		if (map[(int)index.y][(int)index.x] != '\0')
+		{
+			puts("test_1");
 			error_exit_cub(map[(int)index.y], "Invalid map"
 				, "Find this line in the .cub file");
+		}
 	}
 	return (index.x);
 }
@@ -92,7 +102,7 @@ static float	check_other_map_line(t_config *config, t_player *player
 		check_around(map, index);
 		index.x++;
 	}
-	else if (is_sprite(map, index, "23456789") == true)
+	else if (is_sprite(map, index, "2") == true)
 	{
 		check_and_set_sprite(config, map, index);
 		index.x++;

@@ -6,7 +6,7 @@
 /*   By: mravily <mravily@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/10 23:44:18 by mravily           #+#    #+#             */
-/*   Updated: 2020/05/26 16:47:16 by mravily          ###   ########.fr       */
+/*   Updated: 2020/10/27 16:20:24 by mravily          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_event		create_event(void)
 	result.backward = false;
 	result.left = false;
 	result.right = false;
-	result.rotate_left = true;
+	result.rotate_left = false;
 	result.rotate_right = false;
 	result.shoot_left = false;
 	result.shoot_right = false;
