@@ -2,6 +2,10 @@
 
 Cub3D is an individual school project at 42 Paris campus. It is Video game project inspired by Wolfenstein 3D using Minilibx library and ray-casting technology.
 
+<p align="center">
+  <img src="demo.png" width="80%" />
+</p>
+
 ### Controls  
 ``W`` - move forward  
 ``S`` - move backward  
